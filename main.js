@@ -13,11 +13,13 @@ var column6 = $('.c6')
 var column7 = $('.c7')
 
 // Button starts as 'Begin Game' but upon clicking becomes 'Reset Game' and upon clicking reverts to 'Begin Game' etc.
-$('#reset').click(function() {
+$('.begin').click(function() {
     if($(this).text() == "Begin Game") {
         $(this).text("Reset Game")
+        $(this).removeClass('begin').addClass('reset')
     } else {
         $(this).text("Begin Game")
+        $(this).removeClass('reset').addClass('begin')
     }
 })
 
