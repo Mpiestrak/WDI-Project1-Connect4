@@ -4,14 +4,13 @@
 var allSlots = $('.diamond')
 var player1Color = []
 var player2Color = []
-var column1 = $('.c1')
-var column2 = $('.c2')
-var column3 = $('.c3')
-var column4 = $('.c4')
-var column5 = $('.c5')
-var column6 = $('.c6')
-var column7 = $('.c7')
-
+var col1 = $('.c1')
+var col2 = $('.c2')
+var col3 = $('.c3')
+var col4 = $('.c4')
+var col5 = $('.c5')
+var col6 = $('.c6')
+var col7 = $('.c7')
 // Button starts as 'Begin Game' but upon clicking becomes 'Reset Game' and upon clicking reverts to 'Begin Game' etc.
 $('.begin').click(function() {
     if($(this).text() == "Begin Game") {
@@ -23,7 +22,22 @@ $('.begin').click(function() {
     }
 })
 
-$('.gameBoard').click( function() {
-    console.log('WHAT THE HELL AM I DOING?!?!?!?!')
-    
+// $('.gameBoard').click( function() {
+//     console.log('WHAT THE HELL AM I DOING?!?!?!?!')
+// })
+
+// $('#firstC').each(col1, function(){
+//     console.log('hello');
+// })
+
+
+$('#firstC').click(function() {
+    // console.log(col1)
+    let x = document.querySelectorAll('.c1');
+    console.log(x)
+    x.pop();
+    // for(i=0;i<col1.length;i++) {
+    //   x.pop()
+    // }
+    console.log(x)
 })
