@@ -1,0 +1,1 @@
+// make object of each column with number as key, div as value
