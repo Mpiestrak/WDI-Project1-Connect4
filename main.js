@@ -24,7 +24,7 @@ var y = Object.values(x)
 var gameOn = 'off'
 
 $('#firstC').click(function () {
-    if(gameOn === 'off'){
+    if (gameOn === 'off') {
         return
     }
     for (i = $('.c1').length; i >= 0; i--) {
@@ -48,7 +48,7 @@ $('#firstC').click(function () {
 
 
 $('#secondC').click(function () {
-    if(gameOn === 'off'){
+    if (gameOn === 'off') {
         return
     }
     for (i = $('.c2').length; i >= 0; i--) {
@@ -70,7 +70,7 @@ $('#secondC').click(function () {
 })
 
 $('#thirdC').click(function () {
-    if(gameOn === 'off'){
+    if (gameOn === 'off') {
         return
     }
     for (i = $('.c1').length; i >= 0; i--) {
@@ -92,7 +92,7 @@ $('#thirdC').click(function () {
 })
 
 $('#fourthC').click(function () {
-    if(gameOn === 'off'){
+    if (gameOn === 'off') {
         return
     }
     for (i = $('.c4').length; i >= 0; i--) {
@@ -114,7 +114,7 @@ $('#fourthC').click(function () {
 })
 
 $('#fifthC').click(function () {
-    if(gameOn === 'off'){
+    if (gameOn === 'off') {
         return
     }
     for (i = $('.c5').length; i >= 0; i--) {
@@ -136,7 +136,7 @@ $('#fifthC').click(function () {
 })
 
 $('#sixthC').click(function () {
-    if(gameOn === 'off'){
+    if (gameOn === 'off') {
         return
     }
     for (i = $('.c6').length; i >= 0; i--) {
@@ -158,7 +158,7 @@ $('#sixthC').click(function () {
 })
 
 $('#seventhC').click(function () {
-    if(gameOn === 'off'){
+    if (gameOn === 'off') {
         return
     }
     for (i = $('.c7').length; i >= 0; i--) {
