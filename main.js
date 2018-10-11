@@ -1,16 +1,6 @@
 // make object of each column with number as key, div as value
 
 // Adding class player1/player2 when clicked to change background color on lowest unfilled div to correct color
-var allSlots = $('.diamond')
-var player1Color = []
-var player2Color = []
-var col1 = $('.c1')
-var col2 = $('.c2')
-var col3 = $('.c3')
-var col4 = $('.c4')
-var col5 = $('.c5')
-var col6 = $('.c6')
-var col7 = $('.c7')
 
 
 // $('.gameBoard').click( function() {
@@ -31,8 +21,12 @@ let x = $('.c1')
 var y = Object.values(x)
 // console.log(x)
 // console.log(y)
+var gameOn = 'off'
 
 $('#firstC').click(function () {
+    if(gameOn === 'off'){
+        return
+    }
     for (i = $('.c1').length; i >= 0; i--) {
         console.log(i)
         if (c % 2 === 0) {
@@ -54,6 +48,9 @@ $('#firstC').click(function () {
 
 
 $('#secondC').click(function () {
+    if(gameOn === 'off'){
+        return
+    }
     for (i = $('.c2').length; i >= 0; i--) {
         console.log(i)
         if (c % 2 === 0) {
@@ -73,6 +70,9 @@ $('#secondC').click(function () {
 })
 
 $('#thirdC').click(function () {
+    if(gameOn === 'off'){
+        return
+    }
     for (i = $('.c1').length; i >= 0; i--) {
         console.log(i)
         if (c % 2 === 0) {
@@ -92,6 +92,9 @@ $('#thirdC').click(function () {
 })
 
 $('#fourthC').click(function () {
+    if(gameOn === 'off'){
+        return
+    }
     for (i = $('.c4').length; i >= 0; i--) {
         console.log(i)
         if (c % 2 === 0) {
@@ -111,6 +114,9 @@ $('#fourthC').click(function () {
 })
 
 $('#fifthC').click(function () {
+    if(gameOn === 'off'){
+        return
+    }
     for (i = $('.c5').length; i >= 0; i--) {
         console.log(i)
         if (c % 2 === 0) {
@@ -130,6 +136,9 @@ $('#fifthC').click(function () {
 })
 
 $('#sixthC').click(function () {
+    if(gameOn === 'off'){
+        return
+    }
     for (i = $('.c6').length; i >= 0; i--) {
         console.log(i)
         if (c % 2 === 0) {
@@ -149,6 +158,9 @@ $('#sixthC').click(function () {
 })
 
 $('#seventhC').click(function () {
+    if(gameOn === 'off'){
+        return
+    }
     for (i = $('.c7').length; i >= 0; i--) {
         console.log(i)
         if (c % 2 === 0) {
@@ -172,6 +184,7 @@ $('#oneButtonToRuleThemAll').click(function () {
     if ($(this).text() == "Begin Game") {
         $(this).text("Reset Game")
         $(this).removeClass('begin').addClass('reset')
+        gameOn = 'on'
     } else {
         $(this).text("Begin Game")
         $(this).removeClass('reset').addClass('begin')
