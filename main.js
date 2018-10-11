@@ -25,19 +25,92 @@ $('.begin').click(function() {
 // $('.gameBoard').click( function() {
 //     console.log('WHAT THE HELL AM I DOING?!?!?!?!')
 // })
-
-// $('#firstC').each(col1, function(){
-//     console.log('hello');
-// })
+var c = 0;
+$(function() {
+$('.gameBoard').click(function() {
+    (c++)
+    console.log(c)
+    if(c )
+})
+})
 
 
 $('#firstC').click(function() {
-    // console.log(col1)
-    let x = document.querySelectorAll('.c1');
-    console.log(x)
-    x.pop();
-    // for(i=0;i<col1.length;i++) {
-    //   x.pop()
-    // }
-    console.log(x)
+    if(c % 2 === 0) {
+        $('.c1').addClass('player1')
+        if() {
+            
+        }
+        // $('.c1').removeClass('player2')
+    }
+    else if(c % 2 !== 0) {
+        $('.c1').addClass('player2');
+        $('.c1').removeClass('player1')
+    }
+})
+
+$('#secondC').click(function() {
+    if(c % 2 === 0) {
+        $('.c2').addClass('player1')
+        $('.c2').removeClass('player2')
+    }
+    else if(c % 2 !== 0) {
+        $('.c2').addClass('player2');
+        $('.c2').removeClass('player1')
+    }
+})
+
+$('#thirdC').click(function() {
+    if(c % 2 === 0) {
+        $('.c3').addClass('player1')
+        $('.c3').removeClass('player2')
+    }
+    else if(c % 2 !== 0) {
+        $('.c3').addClass('player2');
+        $('.c3').removeClass('player1')
+    }
+})
+
+$('#fourthC').click(function() {
+    if(c % 2 === 0) {
+        $('.c4').addClass('player1')
+        $('.c4').removeClass('player2')
+    }
+    else if(c % 2 !== 0) {
+        $('.c4').addClass('player2');
+        $('.c4').removeClass('player1')
+    }
+})
+
+$('#fifthC').click(function() {
+    if(c % 2 === 0) {
+        $('.c5').addClass('player1')
+        $('.c5').removeClass('player2')
+    }
+    else if(c % 2 !== 0) {
+        $('.c5').addClass('player2');
+        $('.c5').removeClass('player1')
+    }
+})
+
+$('#sixthC').click(function() {
+    if(c % 2 === 0) {
+        $('.c6').addClass('player1')
+        $('.c6').removeClass('player2')
+    }
+    else if(c % 2 !== 0) {
+        $('.c6').addClass('player2');
+        $('.c6').removeClass('player1')
+    }
+})
+
+$('#seventhC').click(function() {
+    if(c % 2 === 0) {
+        $('.c7').addClass('player1')
+        $('.c7').removeClass('player2')
+    }
+    else if(c % 2 !== 0) {
+        $('.c7').addClass('player2');
+        $('.c7').removeClass('player1')
+    }
 })
