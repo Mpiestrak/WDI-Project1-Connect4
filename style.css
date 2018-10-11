@@ -14,7 +14,7 @@
     margin-top: 5px;
     border-radius: 25px;
 }
-.diamonds{
+.diamond{
     text-align: center;
     text-justify: center;
     /* justify-content: center; */
@@ -24,6 +24,7 @@
     height: 7vw;
     border-radius: 25px;
     /* background-color: rgb(75, 75, 75); */
+    
 }
 .title{
     text-align: center;
@@ -32,7 +33,7 @@
 }
 
 .player1{
-    background-color: blue;
+    background-color: rgb(0, 255, 0);
 }
 
 .player2{
