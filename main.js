@@ -40,17 +40,27 @@
 //     }
 // })
 
-
+$('.diamond').each(function () {
+    if ($(this).is('.c1')) {
+        // for(i=1; i<=6;i++) {
+        // console.log($(this).eq(i))
+        if ($(this).eq(0).is('.player1')) {
+            console.log('yaya')
+        }
+        // }
+        // console.log($(this))
+        //     if($(this).is('.'))
+    }
+})
 
 var c = 0;
 $(function () {
     $('#game').click(function () {
         (c++)
-        console.log(c);
+        // console.log(c);
     })
 })
 var gameOn = 'off'
-
 $('#firstC').click(function () {
     if (gameOn === 'off') {
         return
@@ -72,6 +82,31 @@ $('#firstC').click(function () {
             }
         }
     }
+    $('.diamond').each(function () {
+        if ($(this).is('.c1')) {
+            console.log($(this))
+            for(i=6;i>=0;i--)
+            console.log('WHat')
+            if ($('.c1').eq(i).is('.player1')) {
+                console.log('1')
+                if($('.c1').eq(i-1).is('player1')) {
+                    console.log()
+                    if($('.c1').eq(i-2).is('player1')) {
+                        console.log()
+                        if($('.c1').eq(i-3).is('player1')) {
+                            console.log('yay')
+                        }
+                    }
+                    else{return}
+                }
+                else{return}
+            }
+            else{return}
+            // if ($(this).eq(1).is('.player1')) {
+
+            // }   
+        }
+    })
 })
 
 $('#secondC').click(function () {
@@ -79,17 +114,16 @@ $('#secondC').click(function () {
         return
     }
     for (i = $('.c2').length; i >= 0; i--) {
-        console.log(i)
         if (c % 2 === 0) {
             if ($('#secondC > .c2').eq(i).css('background-color') === "rgb(255, 255, 255)") {
                 $('#secondC > .c2').eq(i).addClass('player1')
-                console.log(i)
+                // console.log(i)
                 return
             }
         } else if (c % 2 !== 0) {
             if ($('#secondC > .c2').eq(i).css('background-color') === "rgb(255, 255, 255)") {
                 $('#secondC > .c2').eq(i).addClass('player2')
-                console.log(i)
+                // console.log(i)
                 return
             }
         }
@@ -220,7 +254,5 @@ $('#oneButtonToRuleThemAll').click(function () {
         return c = 0;
     }
 })
-
-
 
 // If 1 is green, check if 2 is green etc.
