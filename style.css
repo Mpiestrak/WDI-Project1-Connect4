@@ -4,7 +4,7 @@
     align-content: center;
 }
 
-.gameBoard{
+#game{
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(7, auto);
@@ -42,7 +42,6 @@
 
 .buttons{
     text-align: center;
-
 }
 
 .begin{

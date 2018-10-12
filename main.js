@@ -6,15 +6,34 @@
 // $('.gameBoard').click( function() {
 //     console.log('WHAT THE HELL AM I DOING?!?!?!?!')
 // })
+var game = [[0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0,],
+            [0, 0, 0, 0, 0, 0, 0,]]
+
+// for(i=0;i<42;i++) {
+//  var pieces = document.createElement('div');
+//     pieces.className = 'diamond';
+//     document.getElementById('game').appendChild(pieces)
+// }
+
+// var arr = [[$('.r1.c1'), $('.r1.c2'), $('.r1.c3'), $('.r1.c4'), $('.r1.c5'), $('.r1.c6'), $('.r1.c7')],
+//         [$('.r2.c1'), $('.r2.c2'), $('.r2.c3'), $('.r2.c4'), $('.r2.c5'), $('.r2.c6'), $('.r2.c7')],
+//         [$('.r3.c1'), $('.r3.c2'), $('.r3.c3'), $('.r3.c4'), $('.r3.c5'), $('.r3.c6'), $('.r3.c7')]]
+// console.log($('.r1.c1'))
+// var arr1 = [$('.r1.c1'), $('.r1.c2'), $('.r1.c3'), $('.r1.c4'), $('.r1.c5'), $('.r1.c6'), $('.r1.c7')]
+
+
+
+
+
 var c = 0;
 $(function () {
-    $('.gameBoard').click(function () {
+    $('#game').click(function () {
         (c++)
-        // console.log(c)
-        // if(c % 2 === 0) {
-        //     console.log('lasjdf');
-        //     .addClass('player1')
-        // }
+        console.log(c);
     })
 })
 let x = $('.c1')
@@ -28,17 +47,17 @@ $('#firstC').click(function () {
         return
     }
     for (i = $('.c1').length; i >= 0; i--) {
-        console.log(i)
+        // console.log(i)
         if (c % 2 === 0) {
             if ($('#firstC > .c1').eq(i).css('background-color') === "rgb(255, 255, 255)") {
                 $('#firstC > .c1').eq(i).addClass('player1')
-                console.log(i)
+                // console.log(i)
                 return
             }
         } else if (c % 2 !== 0) {
             if ($('#firstC > .c1').eq(i).css('background-color') === "rgb(255, 255, 255)") {
                 $('#firstC > .c1').eq(i).addClass('player2')
-                console.log(i)
+                // console.log(i)
                 return
             }
         }
@@ -193,64 +212,5 @@ $('#oneButtonToRuleThemAll').click(function () {
     }
 })
 
+// If 1 is green, check if 2 is green etc.
 
-
-// $('#secondC').click(function () {
-//     if (c % 2 === 0) {
-//         $('.c2').addClass('player1')
-//         $('.c2').removeClass('player2')
-//     } else if (c % 2 !== 0) {
-//         $('.c2').addClass('player2');
-//         $('.c2').removeClass('player1')
-//     }
-// })
-
-// $('#thirdC').click(function () {
-//     if (c % 2 === 0) {
-//         $('.c3').addClass('player1')
-//         $('.c3').removeClass('player2')
-//     } else if (c % 2 !== 0) {
-//         $('.c3').addClass('player2');
-//         $('.c3').removeClass('player1')
-//     }
-// })
-
-// $('#fourthC').click(function () {
-//     if (c % 2 === 0) {
-//         $('.c4').addClass('player1')
-//         $('.c4').removeClass('player2')
-//     } else if (c % 2 !== 0) {
-//         $('.c4').addClass('player2');
-//         $('.c4').removeClass('player1')
-//     }
-// })
-
-// $('#fifthC').click(function () {
-//     if (c % 2 === 0) {
-//         $('.c5').addClass('player1')
-//         $('.c5').removeClass('player2')
-//     } else if (c % 2 !== 0) {
-//         $('.c5').addClass('player2');
-//         $('.c5').removeClass('player1')
-//     }
-// })
-
-// $('#sixthC').click(function () {
-//     if (c % 2 === 0) {
-//         $('.c6').addClass('player1')
-//         $('.c6').removeClass('player2')
-//     } else if (c % 2 !== 0) {
-//         $('.c6').addClass('player2');
-//         $('.c6').removeClass('player1')
-//     }
-// })
-
-// $('#seventhC').click(function () {
-//     if (c % 2 === 0) {
-//         $('.c7').addClass('player1')
-//         $('.c7').removeClass('player2')
-//     } else if (c % 2 !== 0) {
-//         $('.c7').addClass('player2');
-//         $('.c7').removeClass('player1')
-//     }
-// })
