@@ -6,12 +6,14 @@
 // $('.gameBoard').click( function() {
 //     console.log('WHAT THE HELL AM I DOING?!?!?!?!')
 // })
-var game = [[0, 0, 0, 0, 0, 0, 0,],
-            [0, 0, 0, 0, 0, 0, 0,],
-            [0, 0, 0, 0, 0, 0, 0,],
-            [0, 0, 0, 0, 0, 0, 0,],
-            [0, 0, 0, 0, 0, 0, 0,],
-            [0, 0, 0, 0, 0, 0, 0,]]
+// var game = [
+//     [0, 0, 0, 0, 0, 0, 0, ],
+//     [0, 0, 0, 0, 0, 0, 0, ],
+//     [0, 0, 0, 0, 0, 0, 0, ],
+//     [0, 0, 0, 0, 0, 0, 0, ],
+//     [0, 0, 0, 0, 0, 0, 0, ],
+//     [0, 0, 0, 0, 0, 0, 0, ]
+// ]
 
 // for(i=0;i<42;i++) {
 //  var pieces = document.createElement('div');
@@ -25,7 +27,18 @@ var game = [[0, 0, 0, 0, 0, 0, 0,],
 // console.log($('.r1.c1'))
 // var arr1 = [$('.r1.c1'), $('.r1.c2'), $('.r1.c3'), $('.r1.c4'), $('.r1.c5'), $('.r1.c6'), $('.r1.c7')]
 
+// i --   j--
 
+// $('.diamond').each(function() {
+//     // console.log($(this))
+//     if($(this).is('.c1.r1') || $(this).is('.c1.r2') || $(this).is('.c1.r3') || $(this).is('.c1.r4')) {
+//         // console.log('yay')
+//         // console.log($(this))
+//         $(this).css('background', 'blue')
+//     } else {
+//         // console.log('conditional did not pass')
+//     }
+// })
 
 
 
@@ -36,10 +49,6 @@ $(function () {
         console.log(c);
     })
 })
-let x = $('.c1')
-var y = Object.values(x)
-// console.log(x)
-// console.log(y)
 var gameOn = 'off'
 
 $('#firstC').click(function () {
@@ -51,6 +60,7 @@ $('#firstC').click(function () {
         if (c % 2 === 0) {
             if ($('#firstC > .c1').eq(i).css('background-color') === "rgb(255, 255, 255)") {
                 $('#firstC > .c1').eq(i).addClass('player1')
+                $('#firstC > .c1').eq(i).val('1')
                 // console.log(i)
                 return
             }
@@ -63,8 +73,6 @@ $('#firstC').click(function () {
         }
     }
 })
-
-
 
 $('#secondC').click(function () {
     if (gameOn === 'off') {
@@ -204,6 +212,7 @@ $('#oneButtonToRuleThemAll').click(function () {
         $(this).text("Reset Game")
         $(this).removeClass('begin').addClass('reset')
         gameOn = 'on'
+        return c = 0;
     } else {
         $(this).text("Begin Game")
         $(this).removeClass('reset').addClass('begin')
@@ -212,5 +221,6 @@ $('#oneButtonToRuleThemAll').click(function () {
     }
 })
 
-// If 1 is green, check if 2 is green etc.
 
+
+// If 1 is green, check if 2 is green etc.
