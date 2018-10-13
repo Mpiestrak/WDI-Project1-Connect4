@@ -241,15 +241,15 @@ $('#seventhC').click(function () {
 function win() {
     var score = 0;
 
-for(i=42;i>0;i--) {
-    horizontalCheckP1(i);
-    horizontalCheckP2(i);
-    verticalCheckP1(i);
-    verticalCheckP2(i);
-    diagonalCheckP1(i);
-    diagonalCheckP2(i);
-}
-// alert('YOU WINNNNNNNNN')
+    for (i = 42; i > 0; i--) {
+        horizontalCheckP1(i);
+        horizontalCheckP2(i);
+        verticalCheckP1(i);
+        verticalCheckP2(i);
+        diagonalCheckP1(i);
+        diagonalCheckP2(i);
+    }
+    // alert('YOU WINNNNNNNNN')
 }
 
 // Button starts as 'Begin Game' but upon clicking becomes 'Reset Game' and upon clicking reverts to 'Begin Game' etc.
@@ -258,60 +258,63 @@ $('#oneButtonToRuleThemAll').click(function () {
         $(this).text("Reset Game")
         $(this).removeClass('begin').addClass('reset')
         gameOn = 'on'
+        $('.diamond').removeClass('player1 player2')
         return c = 0;
     } else {
         $(this).text("Begin Game")
         $(this).removeClass('reset').addClass('begin')
         $('.diamond').removeClass('player1 player2')
+        gameOn = 'off'
         return c = 0;
     }
 })
 
 // If 1 is green, check if 2 is green etc.
-function horizontalCheckP1 (i) {
+function horizontalCheckP1(i) {
     var score = 0;
-    if($('.'+i).get(0).className.split(' ')[4] === 'player1' && $('.'+i).get(0).className.split(' ')[4] !== undefined && i>0) {
+    if ($('.' + i).get(0).className.split(' ')[4] === 'player1' && $('.' + i).get(0).className.split(' ')[4] !== undefined && i > 0) {
         score++
-        if($('.'+(i-6)).get(0).className.split(' ')[4] !== undefined && $('.'+(i-6)).get(0).className.split(' ')[4] === 'player1' && i-6>0) {
+        if (i - 6 > 0 && $('.' + (i - 6)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i - 6)).get(0).className.split(' ')[4] !== undefined) {
             score++
-            if($('.'+(i-12)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-12)).get(0).className.split(' ')[4] !== undefined && i-12>0) {
+            if (i - 12 > 0 && $('.' + (i - 12)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i - 12)).get(0).className.split(' ')[4] !== undefined) {
                 score++
-                if($('.'+(i-18)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-18)).get(0).className.split(' ')[4] !== undefined && i-18>0) {
+                if (i - 18 > 0 && $('.' + (i - 18)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i - 18)).get(0).className.split(' ')[4] !== undefined) {
                     score++
                     alert('YAYYYYYY')
                     return
-                } else{
+                } else {
                     score = 0
                 }
-            } else{
+            } else {
                 score = 0
             }
-        } else{
+        } else {
             score = 0
         }
     } else {
         score = 0;
     }
 }
-function horizontalCheckP2 (i) {
+
+function horizontalCheckP2(i) {
     var score = 0;
-    if($('.'+i).get(0).className.split(' ')[4] === 'player2' && $('.'+i).get(0).className.split(' ')[4] !== undefined && i>0) {
+    if ($('.' + i).get(0).className.split(' ')[4] === 'player2' && $('.' + i).get(0).className.split(' ')[4] !== undefined && i > 0) {
         score++
-        if($('.'+(i-6)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-6)).get(0).className.split(' ')[4] !== undefined && i-6>0) {
+        if (i - 6 > 0 && $('.' + (i - 6)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 6)).get(0).className.split(' ')[4] !== undefined) {
             score++
-            if($('.'+(i-12)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-12)).get(0).className.split(' ')[4] !== undefined && i-12>0) {
+            if (i - 12 > 0 && $('.' + (i - 12)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 12)).get(0).className.split(' ')[4] !== undefined) {
                 score++
-                if($('.'+(i-18)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-18)).get(0).className.split(' ')[4] !== undefined && i-18>0) {
+                if (i - 18 > 0 && $('.' + (i - 18)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 18)).get(0).className.split(' ')[4] !== undefined) {
                     score++
                     alert('WOOOOOOOOO!!!')
                     return
-                } else{
+                } else {
                     score = 0
                 }
-            } else{
+            } else {
                 score = 0
             }
-        } else{
+        } else {
             score = 0
         }
     } else {
@@ -319,24 +322,24 @@ function horizontalCheckP2 (i) {
     }
 }
 
-function verticalCheckP1 (i) {
+function verticalCheckP1(i) {
     var score = 0;
-    if($('.'+i).get(0).className.split(' ')[4] === 'player1' && $('.'+i).get(0).className.split(' ')[4] !== undefined && i>0) {
+    if ($('.' + i).get(0).className.split(' ')[4] === 'player1' && $('.' + i).get(0).className.split(' ')[4] !== undefined && i > 0) {
         score++
-        if($('.'+(i-1)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-1)).get(0).className.split(' ')[4] !== undefined && i-1>0) {
+        if (i - 1 > 0 && $('.' + (i - 1)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i - 1)).get(0).className.split(' ')[4] !== undefined) {
             score++
-            if($('.'+(i-2)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-2)).get(0).className.split(' ')[4] !== undefined && i-2>0) {
+            if (i - 2 > 0 && $('.' + (i - 2)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i - 2)).get(0).className.split(' ')[4] !== undefined) {
                 score++
-                if($('.'+(i-3)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-3)).get(0).className.split(' ')[4] !== undefined && i-3>0) {
+                if (i - 3 > 0 && $('.' + (i - 3)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i - 3)).get(0).className.split(' ')[4] !== undefined) {
                     score++
                     alert('HOOOOOOOO')
-                } else{
+                } else {
                     score = 0
                 }
-            } else{
+            } else {
                 score = 0
             }
-        } else{
+        } else {
             score = 0
         }
     } else {
@@ -344,24 +347,24 @@ function verticalCheckP1 (i) {
     }
 }
 
-function verticalCheckP2 (i) {
+function verticalCheckP2(i) {
     var score = 0;
-    if($('.'+i).get(0).className.split(' ')[4] === 'player2' && $('.'+i).get(0).className.split(' ')[4] !== undefined && i>0) {
+    if ($('.' + i).get(0).className.split(' ')[4] === 'player2' && $('.' + i).get(0).className.split(' ')[4] !== undefined && i > 0) {
         score++
-        if($('.'+(i-1)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-1)).get(0).className.split(' ')[4] !== undefined && i-1>0) {
+        if ( i - 1 > 0 && $('.' + (i - 1)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 1)).get(0).className.split(' ')[4] !== undefined) {
             score++
-            if($('.'+(i-2)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-2)).get(0).className.split(' ')[4] !== undefined && i-2>0) {
+            if (i - 2 > 0 && $('.' + (i - 2)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 2)).get(0).className.split(' ')[4] !== undefined) {
                 score++
-                if($('.'+(i-3)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-3)).get(0).className.split(' ')[4] !== undefined && i-3>0) {
+                if ( i - 3 > 0 && $('.' + (i - 3)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 3)).get(0).className.split(' ')[4] !== undefined) {
                     score++
                     alert("YEEEEAAAAAAA")
-                } else{
+                } else {
                     score = 0
                 }
-            } else{
+            } else {
                 score = 0
             }
-        } else{
+        } else {
             score = 0
         }
     } else {
@@ -369,24 +372,24 @@ function verticalCheckP2 (i) {
     }
 }
 
-function diagonalCheckP1 (i) {
+function diagonalCheckP1(i) {
     var score = 0;
-    if($('.'+i).get(0).className.split(' ')[4] === 'player1' && $('.'+i).get(0).className.split(' ')[4] !== undefined && i>0) {
+    if ($('.' + i).get(0).className.split(' ')[4] === 'player1' && $('.' + i).get(0).className.split(' ')[4] !== undefined && i > 0) {
         score++
-        if($('.'+(i-7)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-7)).get(0).className.split(' ')[4] !== undefined && i-7>0) {
+        if (i - 7 > 0 && $('.' + (i - 7)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i - 7)).get(0).className.split(' ')[4] !== undefined) {
             score++
-            if($('.'+(i-14)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-14)).get(0).className.split(' ')[4] !== undefined && i-14>0) {
+            if (i - 14 > 0 && $('.' + (i - 14)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i - 14)).get(0).className.split(' ')[4] !== undefined) {
                 score++
-                if($('.'+(i-21)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-21)).get(0).className.split(' ')[4] !== undefined && i-21>0) {
+                if (i - 21 > 0 && $('.' + (i - 21)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i - 21)).get(0).className.split(' ')[4] !== undefined) {
                     score++
                     alert('YOU WINN!!!')
-                } else{
+                } else {
                     score = 0
                 }
-            } else{
+            } else {
                 score = 0
             }
-        } else{
+        } else {
             score = 0
         }
     } else {
@@ -394,24 +397,56 @@ function diagonalCheckP1 (i) {
     }
 }
 
-function diagonalCheckP2 (i) {
+function diagonalCheckRLP2(i) {
     var score = 0;
-    if($('.'+i).get(0).className.split(' ')[4] === 'player2' && $('.'+i).get(0).className.split(' ')[4] !== undefined && i>0) {
+    if ($('.' + i).get(0).className.split(' ')[4] === 'player2' && $('.' + i).get(0).className.split(' ')[4] !== undefined && i > 0) {
+        console.log('maybe')
         score++
-        if($('.'+(i-7)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-7)).get(0).className.split(' ')[4] !== undefined && i-7>0) {
+        if (i - 7 > 0 && $('.' + (i - 7)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 7)).get(0).className.split(' ')[4] !== undefined) {
+            console.log('maybe2')
             score++
-            if($('.'+(i-14)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-14)).get(0).className.split(' ')[4] !== undefined && i-14>0) {
+            if (i - 14 > 0 && $('.' + (i - 14)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 14)).get(0).className.split(' ')[4] !== undefined) {
+                console.log('maybe3')
                 score++
-                if($('.'+(i-21)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-21)).get(0).className.split(' ')[4] !== undefined && i-21>0) {
+                if (i - 21 > 0 && $('.' + (i - 21)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 21)).get(0).className.split(' ')[4] !== undefined) {
                     score++
                     alert('BBBOOOOOOOOOOOLLLLLLLLLUUUURRRR')
-                } else{
+                } else {
                     score = 0
                 }
-            } else{
+            } else {
                 score = 0
             }
-        } else{
+        } else {
+            score = 0
+        }
+    } else {
+        score = 0;
+    }
+}
+
+// LR Diagonal win check test
+unction diagonalCheckRLP2(i) {
+    var score = 0;
+    if ($('.' + i).get(0).className.split(' ')[4] === 'player2' && $('.' + i).get(0).className.split(' ')[4] !== undefined && i > 0) {
+        console.log('maybe')
+        score++
+        if (i - 7 > 0 && $('.' + (i - 7)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 7)).get(0).className.split(' ')[4] !== undefined) {
+            console.log('maybe2')
+            score++
+            if (i - 14 > 0 && $('.' + (i - 14)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 14)).get(0).className.split(' ')[4] !== undefined) {
+                console.log('maybe3')
+                score++
+                if (i - 21 > 0 && $('.' + (i - 21)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 21)).get(0).className.split(' ')[4] !== undefined) {
+                    score++
+                    alert('BBBOOOOOOOOOOOLLLLLLLLLUUUURRRR')
+                } else {
+                    score = 0
+                }
+            } else {
+                score = 0
+            }
+        } else {
             score = 0
         }
     } else {
