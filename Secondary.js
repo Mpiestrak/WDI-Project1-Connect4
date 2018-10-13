@@ -10,28 +10,17 @@ var game = [
     [0, 0, 0, 0, 0, 0, 0, ]
 ]
 
-// for(i=0;i<1;i++) {
-//     var game = document.createElement('array');
-//     console.log('test')
-//     game.setAttribute('class', 'mainAr')
-//     gameBoard.appendChild(game)
-    for(j=0;j<7;j++) {
-    var innerArr = document.createElement('array');
-    innerArr.setAttribute('class', 'inAr')
-    gameBoard.appendChild(innerArr)
-    for(i=0;i<6;i++) {
-        var cells = document.createElement('div');
-        cells.setAttribute('class', 'diamond');
-        innerArr.appendChild(cells)
-    }
-    }
-// }
-
-
+for(i=0;i<game.length;i++) {
+    var row = document.createElement('div');
+    game.appendChild(row)
+    // for(j=0;j<game[j].length;j++) {
+    // var 
+    // }
+}
 //  var game = document.createElement('div');
 //     game.setAttribute('class', i)
 //     $('#gameBoard').append(game)
-// }
+}
 
 
 
@@ -52,6 +41,7 @@ var c = 0;
 $(function () {
     $('#game').click(function () {
         (c++)
+        win()
         // console.log(c);
     })
 })
