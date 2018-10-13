@@ -40,23 +40,24 @@
 //     }
 // })
 
-$('.diamond').each(function () {
-    if ($(this).is('.c1')) {
-        // for(i=1; i<=6;i++) {
-        // console.log($(this).eq(i))
-        if ($(this).eq(0).is('.player1')) {
-            console.log('yaya')
-        }
-        // }
-        // console.log($(this))
-        //     if($(this).is('.'))
-    }
-})
+// $('.diamond').each(function () {
+//     if ($(this).is('.c1')) {
+//         // for(i=1; i<=6;i++) {
+//         // console.log($(this).eq(i))
+//         if ($(this).eq(0).is('.player1')) {
+//             console.log('yaya')
+//         }
+//         // }
+//         // console.log($(this))
+//         //     if($(this).is('.'))
+//     }
+// })
 
 var c = 0;
 $(function () {
     $('#game').click(function () {
         (c++)
+        win()
         // console.log(c);
     })
 })
@@ -70,8 +71,6 @@ $('#firstC').click(function () {
         if (c % 2 === 0) {
             if ($('#firstC > .c1').eq(i).css('background-color') === "rgb(255, 255, 255)") {
                 $('#firstC > .c1').eq(i).addClass('player1')
-                $('#firstC > .c1').eq(i).val('1')
-                // console.log(i)
                 return
             }
         } else if (c % 2 !== 0) {
@@ -82,31 +81,30 @@ $('#firstC').click(function () {
             }
         }
     }
-    $('.diamond').each(function () {
-        if ($(this).is('.c1')) {
-            console.log($(this))
-            for(i=6;i>=0;i--)
-            console.log('WHat')
-            if ($('.c1').eq(i).is('.player1')) {
-                console.log('1')
-                if($('.c1').eq(i-1).is('player1')) {
-                    console.log()
-                    if($('.c1').eq(i-2).is('player1')) {
-                        console.log()
-                        if($('.c1').eq(i-3).is('player1')) {
-                            console.log('yay')
-                        }
-                    }
-                    else{return}
-                }
-                else{return}
-            }
-            else{return}
-            // if ($(this).eq(1).is('.player1')) {
+    // $('.diamond').each(function () {
+    //     if ($(this).is('.c1')) {
+    //         console.log($(this))
+    //         for (i = 6; i >= 0; i--) {
+    //         // console.log('WHat')
+    //         if ($(this).eq(i).is('player1')) {
+    //             console.log('1')
+    //             if ($('.c1').eq(i - 1).is('player1')) {
+    //                 console.log('heyo')
+    //                 if ($('.c1').eq(i - 2).is('player1')) {
+    //                     console.log('frankly')
+    //                     if ($('.c1').eq(i - 3).is('player1')) {
+    //                         console.log('yay')
+    //                     }
+    //                 }
+    //             }
+    //         }
 
-            // }   
-        }
-    })
+    //         // if ($(this).eq(1).is('.player1')) {
+
+    //         // } 
+    //         }
+    //     }
+    // })
 })
 
 $('#secondC').click(function () {
@@ -240,6 +238,20 @@ $('#seventhC').click(function () {
     }
 })
 
+function win() {
+    var score = 0;
+
+for(i=42;i>0;i--) {
+    horizontalCheckP1(i);
+    horizontalCheckP2(i);
+    verticalCheckP1(i);
+    verticalCheckP2(i);
+    diagonalCheckP1(i);
+    diagonalCheckP2(i);
+}
+// alert('YOU WINNNNNNNNN')
+}
+
 // Button starts as 'Begin Game' but upon clicking becomes 'Reset Game' and upon clicking reverts to 'Begin Game' etc.
 $('#oneButtonToRuleThemAll').click(function () {
     if ($(this).text() == "Begin Game") {
@@ -256,3 +268,153 @@ $('#oneButtonToRuleThemAll').click(function () {
 })
 
 // If 1 is green, check if 2 is green etc.
+function horizontalCheckP1 (i) {
+    var score = 0;
+    if($('.'+i).get(0).className.split(' ')[4] === 'player1' && $('.'+i).get(0).className.split(' ')[4] !== undefined && i>0) {
+        score++
+        if($('.'+(i-6)).get(0).className.split(' ')[4] !== undefined && $('.'+(i-6)).get(0).className.split(' ')[4] === 'player1' && i-6>0) {
+            score++
+            if($('.'+(i-12)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-12)).get(0).className.split(' ')[4] !== undefined && i-12>0) {
+                score++
+                if($('.'+(i-18)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-18)).get(0).className.split(' ')[4] !== undefined && i-18>0) {
+                    score++
+                    alert('YAYYYYYY')
+                    return
+                } else{
+                    score = 0
+                }
+            } else{
+                score = 0
+            }
+        } else{
+            score = 0
+        }
+    } else {
+        score = 0;
+    }
+}
+function horizontalCheckP2 (i) {
+    var score = 0;
+    if($('.'+i).get(0).className.split(' ')[4] === 'player2' && $('.'+i).get(0).className.split(' ')[4] !== undefined && i>0) {
+        score++
+        if($('.'+(i-6)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-6)).get(0).className.split(' ')[4] !== undefined && i-6>0) {
+            score++
+            if($('.'+(i-12)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-12)).get(0).className.split(' ')[4] !== undefined && i-12>0) {
+                score++
+                if($('.'+(i-18)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-18)).get(0).className.split(' ')[4] !== undefined && i-18>0) {
+                    score++
+                    alert('WOOOOOOOOO!!!')
+                    return
+                } else{
+                    score = 0
+                }
+            } else{
+                score = 0
+            }
+        } else{
+            score = 0
+        }
+    } else {
+        score = 0;
+    }
+}
+
+function verticalCheckP1 (i) {
+    var score = 0;
+    if($('.'+i).get(0).className.split(' ')[4] === 'player1' && $('.'+i).get(0).className.split(' ')[4] !== undefined && i>0) {
+        score++
+        if($('.'+(i-1)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-1)).get(0).className.split(' ')[4] !== undefined && i-1>0) {
+            score++
+            if($('.'+(i-2)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-2)).get(0).className.split(' ')[4] !== undefined && i-2>0) {
+                score++
+                if($('.'+(i-3)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-3)).get(0).className.split(' ')[4] !== undefined && i-3>0) {
+                    score++
+                    alert('HOOOOOOOO')
+                } else{
+                    score = 0
+                }
+            } else{
+                score = 0
+            }
+        } else{
+            score = 0
+        }
+    } else {
+        score = 0;
+    }
+}
+
+function verticalCheckP2 (i) {
+    var score = 0;
+    if($('.'+i).get(0).className.split(' ')[4] === 'player2' && $('.'+i).get(0).className.split(' ')[4] !== undefined && i>0) {
+        score++
+        if($('.'+(i-1)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-1)).get(0).className.split(' ')[4] !== undefined && i-1>0) {
+            score++
+            if($('.'+(i-2)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-2)).get(0).className.split(' ')[4] !== undefined && i-2>0) {
+                score++
+                if($('.'+(i-3)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-3)).get(0).className.split(' ')[4] !== undefined && i-3>0) {
+                    score++
+                    alert("YEEEEAAAAAAA")
+                } else{
+                    score = 0
+                }
+            } else{
+                score = 0
+            }
+        } else{
+            score = 0
+        }
+    } else {
+        score = 0;
+    }
+}
+
+function diagonalCheckP1 (i) {
+    var score = 0;
+    if($('.'+i).get(0).className.split(' ')[4] === 'player1' && $('.'+i).get(0).className.split(' ')[4] !== undefined && i>0) {
+        score++
+        if($('.'+(i-7)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-7)).get(0).className.split(' ')[4] !== undefined && i-7>0) {
+            score++
+            if($('.'+(i-14)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-14)).get(0).className.split(' ')[4] !== undefined && i-14>0) {
+                score++
+                if($('.'+(i-21)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-21)).get(0).className.split(' ')[4] !== undefined && i-21>0) {
+                    score++
+                    alert('YOU WINN!!!')
+                } else{
+                    score = 0
+                }
+            } else{
+                score = 0
+            }
+        } else{
+            score = 0
+        }
+    } else {
+        score = 0;
+    }
+}
+
+function diagonalCheckP2 (i) {
+    var score = 0;
+    if($('.'+i).get(0).className.split(' ')[4] === 'player2' && $('.'+i).get(0).className.split(' ')[4] !== undefined && i>0) {
+        score++
+        if($('.'+(i-7)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-7)).get(0).className.split(' ')[4] !== undefined && i-7>0) {
+            score++
+            if($('.'+(i-14)).get(0).className.split(' ')[4] === 'player1' && $('.'+(i-14)).get(0).className.split(' ')[4] !== undefined && i-14>0) {
+                score++
+                if($('.'+(i-21)).get(0).className.split(' ')[4] === 'player2' && $('.'+(i-21)).get(0).className.split(' ')[4] !== undefined && i-21>0) {
+                    score++
+                    alert('BBBOOOOOOOOOOOLLLLLLLLLUUUURRRR')
+                } else{
+                    score = 0
+                }
+            } else{
+                score = 0
+            }
+        } else{
+            score = 0
+        }
+    } else {
+        score = 0;
+    }
+}
