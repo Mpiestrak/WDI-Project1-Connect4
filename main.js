@@ -246,8 +246,10 @@ function win() {
         horizontalCheckP2(i);
         verticalCheckP1(i);
         verticalCheckP2(i);
-        diagonalCheckP1(i);
-        diagonalCheckP2(i);
+        diagonalCheckRLP1(i);
+        diagonalCheckRLP2(i);
+        diagonalCheckLRP1(i);
+        diagonalCheckRLP2(i);
     }
     // alert('YOU WINNNNNNNNN')
 }
@@ -280,7 +282,7 @@ function horizontalCheckP1(i) {
                 score++
                 if (i - 18 > 0 && $('.' + (i - 18)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i - 18)).get(0).className.split(' ')[4] !== undefined) {
                     score++
-                    alert('YAYYYYYY')
+                    alert('Player 1 wins!!')
                     return
                 } else {
                     score = 0
@@ -306,7 +308,7 @@ function horizontalCheckP2(i) {
                 score++
                 if (i - 18 > 0 && $('.' + (i - 18)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 18)).get(0).className.split(' ')[4] !== undefined) {
                     score++
-                    alert('WOOOOOOOOO!!!')
+                    alert('Player 2 wins!!')
                     return
                 } else {
                     score = 0
@@ -332,7 +334,7 @@ function verticalCheckP1(i) {
                 score++
                 if (i - 3 > 0 && $('.' + (i - 3)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i - 3)).get(0).className.split(' ')[4] !== undefined) {
                     score++
-                    alert('HOOOOOOOO')
+                    alert('Player 1 wins!!')
                 } else {
                     score = 0
                 }
@@ -351,13 +353,13 @@ function verticalCheckP2(i) {
     var score = 0;
     if ($('.' + i).get(0).className.split(' ')[4] === 'player2' && $('.' + i).get(0).className.split(' ')[4] !== undefined && i > 0) {
         score++
-        if ( i - 1 > 0 && $('.' + (i - 1)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 1)).get(0).className.split(' ')[4] !== undefined) {
+        if (i - 1 > 0 && $('.' + (i - 1)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 1)).get(0).className.split(' ')[4] !== undefined) {
             score++
             if (i - 2 > 0 && $('.' + (i - 2)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 2)).get(0).className.split(' ')[4] !== undefined) {
                 score++
-                if ( i - 3 > 0 && $('.' + (i - 3)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 3)).get(0).className.split(' ')[4] !== undefined) {
+                if (i - 3 > 0 && $('.' + (i - 3)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 3)).get(0).className.split(' ')[4] !== undefined) {
                     score++
-                    alert("YEEEEAAAAAAA")
+                    alert("Player 2 wins!")
                 } else {
                     score = 0
                 }
@@ -372,7 +374,7 @@ function verticalCheckP2(i) {
     }
 }
 
-function diagonalCheckP1(i) {
+function diagonalCheckRLP1(i) {
     var score = 0;
     if ($('.' + i).get(0).className.split(' ')[4] === 'player1' && $('.' + i).get(0).className.split(' ')[4] !== undefined && i > 0) {
         score++
@@ -382,7 +384,7 @@ function diagonalCheckP1(i) {
                 score++
                 if (i - 21 > 0 && $('.' + (i - 21)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i - 21)).get(0).className.split(' ')[4] !== undefined) {
                     score++
-                    alert('YOU WINN!!!')
+                    alert('Player 1 wins!!')
                 } else {
                     score = 0
                 }
@@ -410,7 +412,7 @@ function diagonalCheckRLP2(i) {
                 score++
                 if (i - 21 > 0 && $('.' + (i - 21)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 21)).get(0).className.split(' ')[4] !== undefined) {
                     score++
-                    alert('BBBOOOOOOOOOOOLLLLLLLLLUUUURRRR')
+                    alert('Player 2 wins!!')
                 } else {
                     score = 0
                 }
@@ -426,20 +428,50 @@ function diagonalCheckRLP2(i) {
 }
 
 // LR Diagonal win check test
-unction diagonalCheckRLP2(i) {
+function diagonalCheckLRP2(i) {
     var score = 0;
     if ($('.' + i).get(0).className.split(' ')[4] === 'player2' && $('.' + i).get(0).className.split(' ')[4] !== undefined && i > 0) {
-        console.log('maybe')
+        console.log('first')
         score++
-        if (i - 7 > 0 && $('.' + (i - 7)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 7)).get(0).className.split(' ')[4] !== undefined) {
-            console.log('maybe2')
+        if (i + 5 > 0 && $('.' + (i + 5)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i + 5)).get(0).className.split(' ')[4] !== undefined) {
             score++
-            if (i - 14 > 0 && $('.' + (i - 14)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 14)).get(0).className.split(' ')[4] !== undefined) {
-                console.log('maybe3')
+            console.log('helododl')
+            if (i + 10 > 0 && $('.' + (i + 10)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i + 10)).get(0).className.split(' ')[4] !== undefined) {
+                console.log('second')
                 score++
-                if (i - 21 > 0 && $('.' + (i - 21)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i - 21)).get(0).className.split(' ')[4] !== undefined) {
+                if (i + 15 > 0 && $('.' + (i + 15)).get(0).className.split(' ')[4] === 'player2' && $('.' + (i + 15)).get(0).className.split(' ')[4] !== undefined) {
+                    console.log('third')
                     score++
-                    alert('BBBOOOOOOOOOOOLLLLLLLLLUUUURRRR')
+                    alert('Player 2 wins!!')
+                } else {
+                    score = 0
+                }
+            } else {
+                score = 0
+            }
+        } else {
+            score = 0
+        }
+    } else {
+        score = 0;
+    }
+}
+
+function diagonalCheckLRP1(i) {
+    var score = 0;
+    if ($('.' + i).get(0).className.split(' ')[4] === 'player1' && $('.' + i).get(0).className.split(' ')[4] !== undefined && i > 0) {
+        console.log('first')
+        score++
+        if (i + 5 > 0 && $('.' + (i + 5)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i + 5)).get(0).className.split(' ')[4] !== undefined) {
+            score++
+            console.log('helododl')
+            if (i + 10 > 0 && $('.' + (i + 10)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i + 10)).get(0).className.split(' ')[4] !== undefined) {
+                console.log('second')
+                score++
+                if (i + 15 > 0 && $('.' + (i + 15)).get(0).className.split(' ')[4] === 'player1' && $('.' + (i + 15)).get(0).className.split(' ')[4] !== undefined) {
+                    console.log('third')
+                    score++
+                    alert('Player 1 wins!!')
                 } else {
                     score = 0
                 }
