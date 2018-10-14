@@ -30,8 +30,10 @@ for (j = 0; j < 6; j++) {
 
 
 var clicks = 0;
-$('.diamond').click(function (event) {
+var clickHandler = function (event) {
+    // console.log('stuff: ', event);
     var column = parseInt(event.target.dataset.col, 10);
+    // console.log(column);
     (clicks++);
     addChits(column);
     // checkWin()
@@ -42,24 +44,29 @@ $('.diamond').click(function (event) {
     }
     console.log(currentPlayer);
     console.log(game)
-});
+};
 
-
+$('.diamond').click(clickHandler);
 
 var addChits = function (column) {
+    // console.log("column: ", column)
     var rows = game.length - 1;
     for (rows; rows >= 0; rows--) {
+        console.log("rows: ", rows, game[rows]);
         if (game[rows][column] === 0) {
             // console.log('help');
-            if(currentPlayer === player1) {
-                return 1;
-            } else {
-            return 2;
-            }
+            game[rows][column] = getPlayer();
+            return;
         }
     }
 }
 
+function getPlayer() {
+    if (currentPlayer === player1) {
+        return 1;
+    }
+    return 2;
+}
 
 
 
