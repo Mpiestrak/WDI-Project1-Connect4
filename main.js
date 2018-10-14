@@ -31,9 +31,8 @@ for (j = 0; j < 6; j++) {
 
 var clicks = 0;
 var clickHandler = function (event) {
-    // console.log('stuff: ', event);
-    var column = parseInt(event.target.dataset.col, 10);
-    // console.log(column);
+    console.log('stuff: ', event);
+    var column = event.target.dataset.col;
     (clicks++);
     addChits(column);
     // checkWin()
@@ -42,20 +41,23 @@ var clickHandler = function (event) {
     } else {
         currentPlayer = player1;
     }
-    console.log(currentPlayer);
-    console.log(game)
+    // console.log(currentPlayer);
+    // console.log(game)
 };
 
 $('.diamond').click(clickHandler);
 
 var addChits = function (column) {
-    // console.log("column: ", column)
+    var col = parseInt(column)
     var rows = game.length - 1;
     for (rows; rows >= 0; rows--) {
         console.log("rows: ", rows, game[rows]);
-        if (game[rows][column] === 0) {
+        if (game[rows][col] === 0) {
             // console.log('help');
-            game[rows][column] = getPlayer();
+            game[rows][col] = getPlayer();
+            if(game[rows][col] === 1) {
+                game[rows][column].css("background-color","blue");
+            }
             return;
         }
     }
@@ -66,6 +68,14 @@ function getPlayer() {
         return 1;
     }
     return 2;
+}
+
+function colorChange()  {
+
+}
+
+function checkWin() {
+
 }
 
 
@@ -86,15 +96,3 @@ $('#oneButtonToRuleThemAll').click(function () {
     }
 })
 
-// $('.0').click(function() {
-// $.each(this, function() {
-//     console.log('each');
-//     // innerArr[0].reverse()
-//     if($('.0').value === 0) {
-//         console.log('yay');
-//         $('.0').val() = 1;
-//         console.log($('.0'));
-//         return
-//     }
-// })
-// })
