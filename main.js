@@ -39,6 +39,7 @@ var clickHandler = function (event) {
     (clicks++);
     addChits(column);
     checkWin(column);
+    checkHorizontal()
     if (currentPlayer === player1) {
         currentPlayer = player2;
     } else {
@@ -57,21 +58,42 @@ var addChits = function (column) {
         if (game[rows][column] === 0) {
             console.log('help');
             game[rows][column] = getPlayer();
+            colorChange()
+            return;
         }
-        var chosenRow = game[rows];
-        console.log(chosenRow)
-        if(game[rows][column] === 1) {
-            $('[data-col').css("background-color", "red")
-            $('.diamond').css("border-color", "blue")
-        }
-        return;
     }
     // console.log(column)
     // colorChange();
 
 }
 
-console.log($('[data-col]'))
+// var colorChange = function() {
+//     for (i = 6; i >= 0; i--) {
+//         $(`.row-${i} > [data-col='${i}']`).css("background-color", "red")
+//         console.log($(`.row-${i} > [data-col='${i}']`))
+
+//     }
+// }
+var checkHorizontal = function () {
+    var score = 0;
+    for (j = 6; j > 0; j-- || i = 0; i < 7; j++) {
+        console.log('reaching j')
+        for (i = 0; i < 7; j++)
+            if (game[j][i] === 1)
+            console.log("woodoo")
+                `$('row-${j}')`
+        // for (i = 0; i < 7; i++) {
+        //     var cell = document.createElement('div');
+        //     cell.setAttribute('class', `diamond col-${i}`);
+        //     cell.setAttribute('data-col', i);
+        //     // cell.setAttribute('back-color', 'white')
+        //     row.appendChild(cell);
+        // }
+    }
+}
+
+
+// console.log($('[data-col]'))
 // console.log($('.diamond'))
 
 function getPlayer() {
@@ -80,6 +102,7 @@ function getPlayer() {
     }
     return 2;
 }
+
 function colorChange() {
 
 }
