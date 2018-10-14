@@ -61,8 +61,7 @@ var addChits = function (column) {
         var chosenRow = game[rows];
         console.log(chosenRow)
         if(game[rows][column] === 1) {
-            console.log($('game[rows]'))
-            $('game[rows]').css("background-color", "red")
+            $('[data-col').css("background-color", "red")
             $('.diamond').css("border-color", "blue")
         }
         return;
@@ -72,7 +71,8 @@ var addChits = function (column) {
 
 }
 
-
+console.log($('[data-col]'))
+// console.log($('.diamond'))
 
 function getPlayer() {
     if (currentPlayer === player1) {
@@ -80,16 +80,9 @@ function getPlayer() {
     }
     return 2;
 }
+function colorChange() {
 
-// function colorChange(event)  {
-//     var background = event.currentTarget.style.background-color
-//     console.log(background)
-//     if(currentPlayer  === 1) {
-
-//         console.log(typeof game[rows][column])
-//         // game[rows][column].css("background-color","blue");
-//     }
-// }
+}
 
 function checkWin(column) {
     console.log(column)
