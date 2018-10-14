@@ -5,7 +5,7 @@
 }
 
 #gameBoard {
-    display: grid;
+    display: flex;
     justify-content: center;
     grid-template-columns: repeat(7, auto);
     align-content: center;
@@ -13,12 +13,14 @@
     border: solid 3px rgb(255, 255, 0);
     margin-top: 5px;
     border-radius: 25px;
+    flex-direction: column;
     
 }
-/* .mainAr {
-    display: grid;
-    grid-template-columns: repeat(7, auto);
-} */
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
 .innerArr {
     border-color: greenyellow;
 
