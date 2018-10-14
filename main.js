@@ -15,6 +15,7 @@ var player2 = 'Player 2';
 var currentPlayer = player1
 
 
+
 for (j = 0; j < 6; j++) {
     var row = document.createElement('div');
     row.setAttribute('class', `row-${j} row`);
@@ -24,6 +25,7 @@ for (j = 0; j < 6; j++) {
         var cell = document.createElement('div');
         cell.setAttribute('class', `diamond col-${i}`);
         cell.setAttribute('data-col', i);
+        // cell.setAttribute('back-color', 'white')
         row.appendChild(cell);
     }
 }
@@ -31,11 +33,12 @@ for (j = 0; j < 6; j++) {
 
 var clicks = 0;
 var clickHandler = function (event) {
-    console.log('stuff: ', event);
-    var column = event.target.dataset.col;
+    // console.log('stuff: ', event);
+    var column = parseInt(event.target.dataset.col, 10);
+    // var bGround = event.target;
     (clicks++);
     addChits(column);
-    // checkWin()
+    checkWin(column);
     if (currentPlayer === player1) {
         currentPlayer = player2;
     } else {
@@ -48,20 +51,28 @@ var clickHandler = function (event) {
 $('.diamond').click(clickHandler);
 
 var addChits = function (column) {
-    var col = parseInt(column)
     var rows = game.length - 1;
     for (rows; rows >= 0; rows--) {
         console.log("rows: ", rows, game[rows]);
-        if (game[rows][col] === 0) {
-            // console.log('help');
-            game[rows][col] = getPlayer();
-            if(game[rows][col] === 1) {
-                game[rows][column].css("background-color","blue");
-            }
-            return;
+        if (game[rows][column] === 0) {
+            console.log('help');
+            game[rows][column] = getPlayer();
         }
+        var chosenRow = game[rows];
+        console.log(chosenRow)
+        if(game[rows][column] === 1) {
+            console.log($('game[rows]'))
+            $('game[rows]').css("background-color", "red")
+            $('.diamond').css("border-color", "blue")
+        }
+        return;
     }
+    // console.log(column)
+    // colorChange();
+
 }
+
+
 
 function getPlayer() {
     if (currentPlayer === player1) {
@@ -70,12 +81,26 @@ function getPlayer() {
     return 2;
 }
 
-function colorChange()  {
+// function colorChange(event)  {
+//     var background = event.currentTarget.style.background-color
+//     console.log(background)
+//     if(currentPlayer  === 1) {
 
-}
+//         console.log(typeof game[rows][column])
+//         // game[rows][column].css("background-color","blue");
+//     }
+// }
 
-function checkWin() {
-
+function checkWin(column) {
+    console.log(column)
+    console.log(column + 1)
+    var rows = game.length - 1;
+    for (rows; rows >= 0; rows--)
+        if (game[rows][column] === 1) {
+            console.log('woo')
+            // } && (column + 1) === 1 && (column + 2) === 1 && (column + 3 === 1)) {
+            //     alert('YOU WIN!!!!')
+        }
 }
 
 
@@ -95,4 +120,3 @@ $('#oneButtonToRuleThemAll').click(function () {
         return clicks = 0;
     }
 })
-
