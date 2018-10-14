@@ -15,121 +15,105 @@ var game = [
 //     console.log('test')
 //     game.setAttribute('class', 'mainAr')
 //     gameBoard.appendChild(game)
-    for(j=0;j<7;j++) {
+for (j = 0; j < 7; j++) {
     var innerArr = document.createElement('array');
-    innerArr.setAttribute('class', 'inAr')
+    innerArr.setAttribute('class', 'innerArr ')
+    innerArr.className+= j
     gameBoard.appendChild(innerArr)
-    for(i=0;i<6;i++) {
+    for (i = 0; i < 6; i++) {
         var cells = document.createElement('div');
         cells.setAttribute('class', 'diamond');
         innerArr.appendChild(cells)
     }
-    }
+}
 // }
 
-
-//  var game = document.createElement('div');
-//     game.setAttribute('class', i)
-//     $('#gameBoard').append(game)
-// }
-
-
-
-// $('.diamond').each(function () {
-//     if ($(this).is('.c1')) {
-//         // for(i=1; i<=6;i++) {
-//         // console.log($(this).eq(i))
-//         if ($(this).eq(0).is('.player1')) {
-//             console.log('yaya')
-//         }
-//         // }
-//         // console.log($(this))
-//         //     if($(this).is('.'))
-//     }
-// })
-
-var c = 0;
+var clicks = 0;
 $(function () {
-    $('#game').click(function () {
-        (c++)
+    $('#gameBoard').click(function () {
+        (clicks++)
         // console.log(c);
     })
 })
+
+
 var gameOn = 'off'
-$('#firstC').click(function () {
-    if (gameOn === 'off') {
+
+// $('#gameBoard').click(function () {
+//     if (gameOn === 'off') {
+//         return
+//     }
+//     for (i = 0; i < $('.innerArr').length; i++) {
+//         if (clicks % 2 === 0)
+//             if (clicks % 2 === 0) {
+//                 console.log('hello')
+//         }
+// if (clicks % 2 === 0) {
+//     console.log('hello')
+
+// } else if (clicks % 2 !== 0) {
+
+// }
+// $('.diamond').each(function () {
+//     if ($(this).is('.c1')) {
+//         console.log($(this))
+//         for (i = 6; i >= 0; i--) {
+//         // console.log('WHat')
+//         if ($(this).eq(i).is('player1')) {
+//             console.log('1')
+//             if ($('.c1').eq(i - 1).is('player1')) {
+//                 console.log('heyo')
+//                 if ($('.c1').eq(i - 2).is('player1')) {
+//                     console.log('frankly')
+//                     if ($('.c1').eq(i - 3).is('player1')) {
+//                         console.log('yay')
+//                     }
+//                 }
+//             }
+//         }
+
+//         // if ($(this).eq(1).is('.player1')) {
+
+//         // } 
+//         }
+//     }
+// })
+// })
+$('.0').click(function() {
+$.each(this, function() {
+    // innerArr[0].reverse()
+    if($('.0').value === 0) {
+        console.log('yay')
+        innerArr.eq(0).val() = 1;
+        console.log(innerArr[0].val)
         return
     }
-    for (i = game.length; i >= 0; i--) {
-        // console.log(i)
-        if (c % 2 === 0) {
-            i.value
+})
+})
 
-            // if ($('#firstC > .c1').eq(i).css('background-color') === "rgb(255, 255, 255)") {
-            //     $('#firstC > .c1').eq(i).addClass('player1')
-
-            //     return
-            // }
-        } else if (c % 2 !== 0) {
-            // if ($('#firstC > .c1').eq(i).css('background-color') === "rgb(255, 255, 255)") {
-            //     $('#firstC > .c1').eq(i).addClass('player2')
-            //     // console.log(i)
-            //     return
-            // }
-        }
-    }
-    // $('.diamond').each(function () {
-    //     if ($(this).is('.c1')) {
-    //         console.log($(this))
-    //         for (i = 6; i >= 0; i--) {
-    //         // console.log('WHat')
-    //         if ($(this).eq(i).is('player1')) {
-    //             console.log('1')
-    //             if ($('.c1').eq(i - 1).is('player1')) {
-    //                 console.log('heyo')
-    //                 if ($('.c1').eq(i - 2).is('player1')) {
-    //                     console.log('frankly')
-    //                     if ($('.c1').eq(i - 3).is('player1')) {
-    //                         console.log('yay')
-    //                     }
-    //                 }
-    //             }
+    // $('.innerArr').click(function () {
+    //     console.log('fi')
+    //     if (gameOn === 'off') {
+    //         console.log('off')
+    //         return
+    //     }
+    //     if (c % 2 === 0) {
+    //         $.each(innerArr)
     //         }
-
-    //         // if ($(this).eq(1).is('.player1')) {
-
-    //         // } 
+    //     } else if (c % 2 !== 0) {
+    //         if ($('array').eq(i).css('background-color') === "rgb(255, 255, 255)") {
+    //             $('array').eq(i).addClass('player2')
+    //             // console.log(i)
+    //             return
     //         }
     //     }
     // })
-})
-
-$('#secondC').click(function () {
-    if (gameOn === 'off') {
-        return
-    }
-    for (i = $('.c2').length; i >= 0; i--) {
-        if (c % 2 === 0) {
-            if ($('#secondC > .c2').eq(i).css('background-color') === "rgb(255, 255, 255)") {
-                $('#secondC > .c2').eq(i).addClass('player1')
-                // console.log(i)
-                return
-            }
-        } else if (c % 2 !== 0) {
-            if ($('#secondC > .c2').eq(i).css('background-color') === "rgb(255, 255, 255)") {
-                $('#secondC > .c2').eq(i).addClass('player2')
-                // console.log(i)
-                return
-            }
-        }
-    }
-})
 
 $('#thirdC').click(function () {
     if (gameOn === 'off') {
         return
     }
-    for (i = $('.c1').length; i >= 0; i--) {
+    for (i = $('.c3').length; i >= 0; i--) {
         console.log(i)
         if (c % 2 === 0) {
             if ($('#thirdC > .c3').eq(i).css('background-color') === "rgb(255, 255, 255)") {

@@ -19,7 +19,7 @@
     display: grid;
     grid-template-columns: repeat(7, auto);
 } */
-.inAr {
+.innerArr {
     border-color: greenyellow;
 
 }
