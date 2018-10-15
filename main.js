@@ -75,17 +75,6 @@ var addChits = function (column) {
     }
 }
 
-var reset = function (column) {
-    var rows = game.length - 1;
-    for (rows; rows >= 0; rows--) {
-        console.log(game[rows][column])
-        if (game[rows][column] !== 0) {
-            game[rows][column] = 0;
-            return;
-        }
-    }
-}
-
 function colorChange(row, column) {
     var cell = $(`.row-${row} .col-${column}`);
     if (currentPlayer === player1) {
@@ -237,8 +226,14 @@ $('#oneButtonToRuleThemAll').click(function () {
         gameOn = 'off';
         currentPlayer = player1;
         $('.diamond').removeClass('player1 player2');
-        reset();
-
+        game = [
+            [0, 0, 0, 0, 0, 0, 0, ],
+            [0, 0, 0, 0, 0, 0, 0, ],
+            [0, 0, 0, 0, 0, 0, 0, ],
+            [0, 0, 0, 0, 0, 0, 0, ],
+            [0, 0, 0, 0, 0, 0, 0, ],
+            [0, 0, 0, 0, 0, 0, 0, ]
+        ]        
     }
 })
 console.log(gameOn)
