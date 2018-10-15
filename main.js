@@ -133,20 +133,20 @@ var horizontalCheck = function (rowIndex, colIndex) {
 var checkVertical = function(rowIndex, colIndex) {
     var inARow = 1; // number of chips in a row
     let row = game[rowIndex];
-    // console.log(rowIndex)
     let val = row[colIndex];
-    // console.log(row[colIndex])
     if(val === 0){
         return false;
     }
-    let currentRow = rowIndex;
+    let col = colIndex
+    let currentRow = rowIndex - 1;
     // console.log(rowIndex)
-    for(currentRow; currentRow < 5; currentRow++){
-        // console.log('working')
-        var col = colIndex
-        // console.log(row[col])
-        if(row[col] === val) {
-            console.log(row[col])
+    for(currentRow; currentRow >= 0; currentRow--){
+        var row1 = game[currentRow]
+        console.log(currentRow)
+        console.log(row1)
+        console.log(row1[col])
+        if(row1[col] === val) {
+            console.log('workin!!')
             // console.log(inARow)
             inARow++;
         } else{
