@@ -15,7 +15,7 @@ var player2 = 'Player 2';
 var currentPlayer = player1;
 
 
-function create () {
+function create() {
     for (j = 0; j < 6; j++) {
         var row = document.createElement('div');
         row.setAttribute('class', `row-${j} row`);
@@ -74,36 +74,35 @@ var addChits = function (column) {
     // colorChange();
 }
 
- function colorChange (row, column) {
+function colorChange(row, column) {
     var cell = $(`.row-${row} .col-${column}`);
     // console.log(cell, row, column);
-    if(currentPlayer === player1) {
+    if (currentPlayer === player1) {
         cell.addClass('player1');
-    }
-    else if(currentPlayer === player2) {
+    } else if (currentPlayer === player2) {
         cell.addClass('player2');
     }
 }
 
-var checkWin = function() {
+var checkWin = function () {
     var maxRows = game.length;
     var row = 0;
-    for(row; row < maxRows; row++) {
-        var col = 0;  
+    for (row; row < maxRows; row++) {
+        var col = 0;
         var maxCols = game[row].length;
-        for(col; col < maxCols; col++) {
+        for (col; col < maxCols; col++) {
             // console.log('also running')
             var winHorizontal = horizontalCheck(row, col);
             var winVertical = checkVertical(row, col);
             // var winDiagonalLR = DiagonalRL(row, col);
-            // var winDiagonalLR = DiagonalLR(row, col);
-            if (winHorizontal === true || winVertical === true) {
-                //  || winDiagonalRL === true || winDiagonalLR === true
+            var winDiagonalLR = DiagonalLR(row, col);
+            if (winHorizontal === true || winVertical === true || winDiagonalLR === true) {
+                //  || winDiagonalRL === true 
                 alert('You Won!!');
             }
         }
     }
-    
+
 }
 
 
@@ -112,51 +111,74 @@ var horizontalCheck = function (rowIndex, colIndex) {
     var inARow = 1; // number of chips in a row
     let row = game[rowIndex];
     let val = row[colIndex]; // value of current cell
-    if(val === 0){
+    if (val === 0) {
         return false;
     }
     let col = colIndex + 1;
-    for(col; col < row.length; col++) {
-        if(row[col] === val) {
+    for (col; col < row.length; col++) {
+        console.log(row[col]);
+        if (row[col] === val) {
+            console.log(inARow)
             // console.log(row[col]);
-            inARow++;          
-        } else{
+            inARow++;
+        } else {
             break;
         }
     }
-    if(inARow >= 4) {
+    if (inARow >= 4) {
+        console.log('WINERE')
         return true;
     }
     return false;
 }
 
-var checkVertical = function(rowIndex, colIndex) {
+var checkVertical = function (rowIndex, colIndex) {
     var inARow = 1; // number of chips in a row
     let row = game[rowIndex];
     let val = row[colIndex];
-    if(val === 0){
+    if (val === 0) {
         return false;
     }
     let col = colIndex
     let currentRow = rowIndex - 1;
-    // console.log(rowIndex)
-    for(currentRow; currentRow >= 0; currentRow--){
+    for (currentRow; currentRow >= 0; currentRow--) {
         var row1 = game[currentRow]
-        console.log(currentRow)
-        console.log(row1)
-        console.log(row1[col])
-        if(row1[col] === val) {
-            console.log('workin!!')
-            // console.log(inARow)
+        if (row1[col] === val) {
             inARow++;
-        } else{
+        } else {
             break;
         }
     }
-    if(inARow >= 4) {
+    if (inARow >= 4) {
         return true;
     }
-    return false;    
+    return false;
+}
+
+var DiagonalLR = function (rowIndex, colIndex) {
+    var inARow = 1;
+    let row = game[rowIndex];
+    let val = row[colIndex];
+    if (val === 0) {
+        return false;
+    }
+    if (val === undefined) {
+        return false;
+    }
+    let col = colIndex + 1;
+    let currentRow = rowIndex - 1;
+    for (currentRow, col; currentRow >= 0, col < row.length; currentRow--, col++) {
+        var row1 = game[currentRow]
+        if (row1[col] === val) {
+            inARow++
+        } else {
+            break;
+        }
+    }
+    if (inARow >= 4) {
+        return true;
+    }
+    return false;
 }
 //     for (rows; rows >= 0; rows--) {
 //         var cell = game[rows][column];
