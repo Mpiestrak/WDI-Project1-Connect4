@@ -14,7 +14,6 @@ var player1 = 'Player 1';
 var player2 = 'Player 2';
 var currentPlayer = player1;
 
-
 function create() {
     for (j = 0; j < 6; j++) {
         var row = document.createElement('div');
@@ -31,23 +30,21 @@ function create() {
 }
 create();
 
+gameOn = 'off'
 var clicks = 0;
 var clickHandler = function (event) {
-    // console.log('stuff: ', event);
+    if (gameOn === 'off') {
+        return;
+    }
     var column = parseInt(event.target.dataset.col, 10);
-    // var bGround = event.target;
     (clicks++);
     addChits(column);
     checkWin();
     if (currentPlayer === player1) {
         currentPlayer = player2;
-        // console.log(currentPlayer)
     } else {
         currentPlayer = player1;
-        // console.log(currentPlayer)
     }
-    // console.log(currentPlayer);
-    // console.log(game)
 };
 
 
@@ -64,19 +61,15 @@ var addChits = function (column) {
     var rows = game.length - 1;
     for (rows; rows >= 0; rows--) {
         if (game[rows][column] === 0) {
-            // console.log('help');
             game[rows][column] = getPlayer();
             colorChange(rows, column);
             return;
         }
     }
-    // console.log(column)
-    // colorChange();
 }
 
 function colorChange(row, column) {
     var cell = $(`.row-${row} .col-${column}`);
-    // console.log(cell, row, column);
     if (currentPlayer === player1) {
         cell.addClass('player1');
     } else if (currentPlayer === player2) {
@@ -91,14 +84,23 @@ var checkWin = function () {
         var col = 0;
         var maxCols = game[row].length;
         for (col; col < maxCols; col++) {
-            // console.log('also running')
             var winHorizontal = horizontalCheck(row, col);
             var winVertical = checkVertical(row, col);
-            // var winDiagonalLR = DiagonalRL(row, col);
-            var winDiagonalLR = DiagonalLR(row, col);
-            if (winHorizontal === true || winVertical === true || winDiagonalLR === true) {
-                //  || winDiagonalRL === true 
+            var winDiagonalLR = DiagonalRL(row, col);
+            var winDiagonalRL = DiagonalLR(row, col);
+            if (winHorizontal === true || winVertical === true || winDiagonalLR === true || winDiagonalRL === true) {
                 alert('You Won!!');
+                gameOn = 'off';
+                inARow = 1;
+                if (currentPlayer === player1) {
+                    console.log('me')
+                    player1Score++
+                    return;
+                } else if (currentPlayer === player2) {
+                    console.log('you');
+                    player2Score++
+                    return;
+                }
             }
         }
     }
@@ -126,7 +128,6 @@ var horizontalCheck = function (rowIndex, colIndex) {
         }
     }
     if (inARow >= 4) {
-        console.log('WINERE')
         return true;
     }
     return false;
@@ -180,6 +181,50 @@ var DiagonalLR = function (rowIndex, colIndex) {
     }
     return false;
 }
+console.log(game[0])
+var DiagonalRL = function (rowIndex, colIndex) {
+    var inARow = 1;
+    let row = game[rowIndex];
+    let val = row[colIndex];
+    if (val === 0) {
+        return false;
+    }
+    if (val === undefined) {
+        return false;
+    }
+    let col = colIndex - 1;
+    let currentRow = rowIndex - 1;
+    // for(col; col>=0; col--)
+    for (currentRow, col; currentRow >= 0, col >= 0; currentRow--, col--) {
+        var row1 = game[currentRow]
+        if(row1[col] === val) {
+            inARow++
+        } else {
+            break;
+        }
+    }
+    if (inARow >= 4) {
+        return true;
+    }
+    return false;
+}
+
+$('#oneButtonToRuleThemAll').click(function () {
+    if ($(this).text() == "Begin Game") {
+        $(this).text("Reset Game");
+        $(this).removeClass('begin').addClass('reset');
+        gameOn = 'on';
+        currentPlayer = player1;
+    } else {
+        $(this).text("Begin Game");
+        $(this).removeClass('reset').addClass('begin');
+        gameOn = 'off';
+        currentPlayer = player1;
+        $('.diamond').removeClass('player1 player2');
+
+    }
+})
+console.log(gameOn)
 //     for (rows; rows >= 0; rows--) {
 //         var cell = game[rows][column];
 //         // console.log("rows: ", rows, game[rows]);
@@ -261,21 +306,3 @@ var DiagonalLR = function (rowIndex, colIndex) {
 //             //     alert('YOU WIN!!!!')
 //         }
 // }
-
-
-
-$('#oneButtonToRuleThemAll').click(function () {
-    if ($(this).text() == "Begin Game") {
-        $(this).text("Reset Game");
-        $(this).removeClass('begin').addClass('reset');
-        gameOn = 'on';
-        currentplayer = player1;
-        return clicks = 0;
-    } else {
-        $(this).text("Begin Game");
-        $(this).removeClass('reset').addClass('begin');
-        gameOn = 'off';
-        currentplayer = player1;
-        return clicks = 0;
-    }
-})
