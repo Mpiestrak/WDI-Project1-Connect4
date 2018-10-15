@@ -12,24 +12,24 @@ var game = [
 
 var player1 = 'Player 1';
 var player2 = 'Player 2';
-var currentPlayer = player1
+var currentPlayer = player1;
 
 
-
-for (j = 0; j < 6; j++) {
-    var row = document.createElement('div');
-    row.setAttribute('class', `row-${j} row`);
-    var gameBoard = document.getElementById('gameBoard');
-    gameBoard.appendChild(row);
-    for (i = 0; i < 7; i++) {
-        var cell = document.createElement('div');
-        cell.setAttribute('class', `diamond col-${i}`);
-        cell.setAttribute('data-col', i);
-        // cell.setAttribute('back-color', 'white')
-        row.appendChild(cell);
+function create () {
+    for (j = 0; j < 6; j++) {
+        var row = document.createElement('div');
+        row.setAttribute('class', `row-${j} row`);
+        var gameBoard = document.getElementById('gameBoard');
+        gameBoard.appendChild(row);
+        for (i = 0; i < 7; i++) {
+            var cell = document.createElement('div');
+            cell.setAttribute('class', `diamond col-${i}`);
+            cell.setAttribute('data-col', i);
+            row.appendChild(cell);
+        }
     }
 }
-
+create();
 
 var clicks = 0;
 var clickHandler = function (event) {
@@ -38,29 +38,35 @@ var clickHandler = function (event) {
     // var bGround = event.target;
     (clicks++);
     addChits(column);
-    checkWin(column);
-    horizontalCheck(column);
+    checkWin();
     if (currentPlayer === player1) {
         currentPlayer = player2;
-        console.log(currentPlayer)
+        // console.log(currentPlayer)
     } else {
         currentPlayer = player1;
-        console.log(currentPlayer)
+        // console.log(currentPlayer)
     }
     // console.log(currentPlayer);
     // console.log(game)
 };
+
+
+function getPlayer() {
+    if (currentPlayer === player1) {
+        return 1;
+    }
+    return 2;
+}
 
 $('.diamond').click(clickHandler);
 
 var addChits = function (column) {
     var rows = game.length - 1;
     for (rows; rows >= 0; rows--) {
-        console.log("rows: ", rows, game[rows]);
         if (game[rows][column] === 0) {
-            console.log('help');
+            // console.log('help');
             game[rows][column] = getPlayer();
-            colorChange()
+            colorChange(rows, column);
             return;
         }
     }
@@ -68,24 +74,88 @@ var addChits = function (column) {
     // colorChange();
 }
 
-for (j = 0; j < 6; j++) {
-    
-    // var row = document.createElement('div');
-    // row.setAttribute('class', `row-${j} row`);
-    // var gameBoard = document.getElementById('gameBoard');
-    // gameBoard.appendChild(row);
-    for (i = 0; i < 7; i++) {
-        // var cell = document.createElement('div');
-        // cell.setAttribute('class', `diamond col-${i}`);
-        // cell.setAttribute('data-col', i);
-        // // cell.setAttribute('back-color', 'white')
-        // row.appendChild(cell);
+ function colorChange (row, column) {
+    var cell = $(`.row-${row} .col-${column}`);
+    console.log(cell, row, column);
+    if(currentPlayer === player1) {
+        cell.addClass('player1');
+    }
+    else if(currentPlayer === player2) {
+        cell.addClass('player2');
     }
 }
 
-// var horizontalCheck = function (column) {
-//     var score = 0;
-//     var rows = game.length - 1;
+var checkWin = function() {
+    
+    var maxRows = game.length;
+    var row = 0;
+    for(row; row < maxRows; row++) {
+        // console.log('running');
+        var col = 0;  
+        var maxCols = game[row].length;
+        for(col; col < maxCols; col++) {
+            // console.log('also running')
+            var winHorizontal = horizontalCheck(row, col);
+            // var winVertical = checkVertical(row, col);
+            // checkDiagonalTopToBottom(row, col);
+            // var winDiagonalBottomToTop = checkDiagonalBottomToTop(row, col);
+            if (winHorizontal === 'true') {
+                alert('we won');
+            }
+        }
+    }
+    
+}
+
+
+
+var horizontalCheck = function (rowIndex, colIndex) {
+    var score = 1; // number of chips in a row
+    let row = game[rowIndex];
+    // console.log(game)
+    let val = row[colIndex]; // value of current cell
+    if(val === 0){
+        return false;
+    }
+    let col = colIndex + 1;
+    for(col; col < row.length; col++) {
+        if(row[col] === val) {
+            // console.log('still running');
+            score++;  
+            console.log(score);          
+        } else{
+            break;
+        }
+    }
+    if(score >= 4) {
+        console.log('SUCCESSS')
+        return true;
+    }
+    return false;
+}
+
+// var checkVertical = function(rowIndex, colIndex) {
+//     var score = 1; // number of chips in a row
+//     let row = game[rowIndex];
+//     let val = row[colIndex]; // value of current cell
+//     if(val === 0){
+//         return false;
+//     }
+//     let currentRow = row + 1;
+//     for(currentRow; currentRow < currentRow.length; currentRow++) {
+        
+//         const col = colIndex
+//         if(row[col] === val) {
+//             score++;
+//         } else{
+//             break;
+//         }
+//     }
+//     if(score >= 4) {
+//         return true;
+//     }
+//     return false;    
+// }
 //     for (rows; rows >= 0; rows--) {
 //         var cell = game[rows][column];
 //         // console.log("rows: ", rows, game[rows]);
@@ -123,55 +193,50 @@ for (j = 0; j < 6; j++) {
 //     console.log($(`.row-${i} > [data-col='${i}']`))
 // }
 
-var color
-$(`.row-${j} > .col-${i}`)
-var checkHorizontal = function (column) {
-    var score = 0;
-    for (j = 5; j >= 0; j--) {
-        if (game[j][column] === 1)
-
-            //    console.log(game[j][column])
-            //    console.log(typeof game[j][column])
-            for (i = 0; i < 7; i++) {
 
 
-                // for (i = 0; i < 7; i++) {
-                //     var cell = document.createElement('div');
-                //     cell.setAttribute('class', `diamond col-${i}`);
-                //     cell.setAttribute('data-col', i);
-                //     // cell.setAttribute('back-color', 'white')
-                //     row.appendChild(cell);
-                // }
-            }
-    }
-}
+// var checkHorizontal = function (column) {
+//     var score = 0;
+//     for (j = 5; j >= 0; j--) {
+//         if (game[j][column] === 1)
+
+//             //    console.log(game[j][column])
+//             //    console.log(typeof game[j][column])
+//             for (i = 0; i < 7; i++) {
+
+
+//                 for (i = 0; i < 7; i++) {
+//                     // var cell = document.createElement('div');
+//                     // cell.setAttribute('class', `diamond col-${i}`);
+//                     // cell.setAttribute('data-col', i);
+//                     // // cell.setAttribute('back-color', 'white')
+//                     // row.appendChild(cell);
+//                 }
+//             }
+//     }
+// }
 
 
 // console.log($('[data-col]'))
 // console.log($('.diamond'))
 
-function getPlayer() {
-    if (currentPlayer === player1) {
-        return 1;
-    }
-    return 2;
-}
 
-function colorChange() {
 
-}
+// function colorChange() {
+//     var woah = `$()`
+// }
 
-function checkWin(column) {
-    console.log(column)
-    console.log(column + 1)
-    var rows = game.length - 1;
-    for (rows; rows >= 0; rows--)
-        if (game[rows][column] === 1) {
-            console.log('woo')
-            // } && (column + 1) === 1 && (column + 2) === 1 && (column + 3 === 1)) {
-            //     alert('YOU WIN!!!!')
-        }
-}
+// function checkWin(column) {
+//     console.log(column)
+//     console.log(column + 1)
+//     var rows = game.length - 1;
+//     for (rows; rows >= 0; rows--)
+//         if (game[rows][column] === 1) {
+//             console.log('woo')
+//             // } && (column + 1) === 1 && (column + 2) === 1 && (column + 3 === 1)) {
+//             //     alert('YOU WIN!!!!')
+//         }
+// }
 
 
 
