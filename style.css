@@ -13,7 +13,7 @@
     grid-template-columns: repeat(7, auto);
     align-content: center;
     background-color: rgb(80, 80, 80);
-    /* border: solid 3px rgb(255, 255, 0); */
+    border: solid 10px rgb(80, 80, 80);
     margin-top: 5px;
     border-radius: 25px;
     flex-direction: column;
@@ -29,9 +29,9 @@
     text-align: center;
     text-justify: center;
     border: 5px solid rgb(95, 0, 0);
-    width: 9vw;
-    height: 7vw;
-    border-radius: 25px;
+    width: 6vw;
+    height: 6vw;
+    border-radius: 45%;
     background-color: white;
 }
 
