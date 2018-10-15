@@ -39,11 +39,13 @@ var clickHandler = function (event) {
     (clicks++);
     addChits(column);
     checkWin(column);
-    checkHorizontal()
+    horizontalCheck(column);
     if (currentPlayer === player1) {
         currentPlayer = player2;
+        console.log(currentPlayer)
     } else {
         currentPlayer = player1;
+        console.log(currentPlayer)
     }
     // console.log(currentPlayer);
     // console.log(game)
@@ -64,31 +66,83 @@ var addChits = function (column) {
     }
     // console.log(column)
     // colorChange();
-
 }
 
-// var colorChange = function() {
-//     for (i = 6; i >= 0; i--) {
-//         $(`.row-${i} > [data-col='${i}']`).css("background-color", "red")
-//         console.log($(`.row-${i} > [data-col='${i}']`))
+for (j = 0; j < 6; j++) {
+    
+    // var row = document.createElement('div');
+    // row.setAttribute('class', `row-${j} row`);
+    // var gameBoard = document.getElementById('gameBoard');
+    // gameBoard.appendChild(row);
+    for (i = 0; i < 7; i++) {
+        // var cell = document.createElement('div');
+        // cell.setAttribute('class', `diamond col-${i}`);
+        // cell.setAttribute('data-col', i);
+        // // cell.setAttribute('back-color', 'white')
+        // row.appendChild(cell);
+    }
+}
 
+// var horizontalCheck = function (column) {
+//     var score = 0;
+//     var rows = game.length - 1;
+//     for (rows; rows >= 0; rows--) {
+//         var cell = game[rows][column];
+//         // console.log("rows: ", rows, game[rows]);
+//         if (game[rows][column] === 1) {
+//             score++
+//             console.log('first')
+//             if ((game[rows][column] + 1) === 1) {
+//                 score++
+//                 console.log('second')
+//                 if (cell + 2 === 1) {
+//                     score++
+//                     console.log('third')
+//                     if (cell + 3 === 1) {
+//                         score++
+//                         alert('player wins!!')
+//                         return
+//                     } else {
+//                         score = 0;
+//                     }
+//                 } else {
+//                     score = 0;
+//                 }
+//             } else {
+//                 score = 0;
+//             }
+//         } else {
+//             score = 0;
+//         }
 //     }
 // }
-var checkHorizontal = function () {
+// for (i = game.length -1; i >= 0; i--) {
+//     for(j=0; j<7;j++){
+//         if(game[i][column] === 1){
+//     $(`.row-${i} > [data-col='${j}']`).css("background-color", "red")
+//     console.log($(`.row-${i} > [data-col='${i}']`))
+// }
+
+var color
+$(`.row-${j} > .col-${i}`)
+var checkHorizontal = function (column) {
     var score = 0;
-    for (j = 6; j > 0; j-- || i = 0; i < 7; j++) {
-        console.log('reaching j')
-        for (i = 0; i < 7; j++)
-            if (game[j][i] === 1)
-            console.log("woodoo")
-                `$('row-${j}')`
-        // for (i = 0; i < 7; i++) {
-        //     var cell = document.createElement('div');
-        //     cell.setAttribute('class', `diamond col-${i}`);
-        //     cell.setAttribute('data-col', i);
-        //     // cell.setAttribute('back-color', 'white')
-        //     row.appendChild(cell);
-        // }
+    for (j = 5; j >= 0; j--) {
+        if (game[j][column] === 1)
+
+            //    console.log(game[j][column])
+            //    console.log(typeof game[j][column])
+            for (i = 0; i < 7; i++) {
+
+
+                // for (i = 0; i < 7; i++) {
+                //     var cell = document.createElement('div');
+                //     cell.setAttribute('class', `diamond col-${i}`);
+                //     cell.setAttribute('data-col', i);
+                //     // cell.setAttribute('back-color', 'white')
+                //     row.appendChild(cell);
+                // }
+            }
     }
 }
 
