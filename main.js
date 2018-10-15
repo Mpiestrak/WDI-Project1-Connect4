@@ -76,7 +76,7 @@ var addChits = function (column) {
 
  function colorChange (row, column) {
     var cell = $(`.row-${row} .col-${column}`);
-    console.log(cell, row, column);
+    // console.log(cell, row, column);
     if(currentPlayer === player1) {
         cell.addClass('player1');
     }
@@ -86,21 +86,20 @@ var addChits = function (column) {
 }
 
 var checkWin = function() {
-    
     var maxRows = game.length;
     var row = 0;
     for(row; row < maxRows; row++) {
-        // console.log('running');
         var col = 0;  
         var maxCols = game[row].length;
         for(col; col < maxCols; col++) {
             // console.log('also running')
             var winHorizontal = horizontalCheck(row, col);
-            // var winVertical = checkVertical(row, col);
-            // checkDiagonalTopToBottom(row, col);
-            // var winDiagonalBottomToTop = checkDiagonalBottomToTop(row, col);
-            if (winHorizontal === 'true') {
-                alert('we won');
+            var winVertical = checkVertical(row, col);
+            // var winDiagonalLR = DiagonalRL(row, col);
+            // var winDiagonalLR = DiagonalLR(row, col);
+            if (winHorizontal === true || winVertical === true) {
+                //  || winDiagonalRL === true || winDiagonalLR === true
+                alert('You Won!!');
             }
         }
     }
@@ -110,9 +109,8 @@ var checkWin = function() {
 
 
 var horizontalCheck = function (rowIndex, colIndex) {
-    var score = 1; // number of chips in a row
+    var inARow = 1; // number of chips in a row
     let row = game[rowIndex];
-    // console.log(game)
     let val = row[colIndex]; // value of current cell
     if(val === 0){
         return false;
@@ -120,69 +118,73 @@ var horizontalCheck = function (rowIndex, colIndex) {
     let col = colIndex + 1;
     for(col; col < row.length; col++) {
         if(row[col] === val) {
-            // console.log('still running');
-            score++;  
-            console.log(score);          
+            // console.log(row[col]);
+            inARow++;          
         } else{
             break;
         }
     }
-    if(score >= 4) {
-        console.log('SUCCESSS')
+    if(inARow >= 4) {
         return true;
     }
     return false;
 }
 
-// var checkVertical = function(rowIndex, colIndex) {
-//     var score = 1; // number of chips in a row
-//     let row = game[rowIndex];
-//     let val = row[colIndex]; // value of current cell
-//     if(val === 0){
-//         return false;
-//     }
-//     let currentRow = row + 1;
-//     for(currentRow; currentRow < currentRow.length; currentRow++) {
-        
-//         const col = colIndex
-//         if(row[col] === val) {
-//             score++;
-//         } else{
-//             break;
-//         }
-//     }
-//     if(score >= 4) {
-//         return true;
-//     }
-//     return false;    
-// }
+var checkVertical = function(rowIndex, colIndex) {
+    var inARow = 1; // number of chips in a row
+    let row = game[rowIndex];
+    // console.log(rowIndex)
+    let val = row[colIndex];
+    // console.log(row[colIndex])
+    if(val === 0){
+        return false;
+    }
+    let currentRow = rowIndex;
+    // console.log(rowIndex)
+    for(currentRow; currentRow < 5; currentRow++){
+        // console.log('working')
+        var col = colIndex
+        // console.log(row[col])
+        if(row[col] === val) {
+            console.log(row[col])
+            // console.log(inARow)
+            inARow++;
+        } else{
+            break;
+        }
+    }
+    if(inARow >= 4) {
+        return true;
+    }
+    return false;    
+}
 //     for (rows; rows >= 0; rows--) {
 //         var cell = game[rows][column];
 //         // console.log("rows: ", rows, game[rows]);
 //         if (game[rows][column] === 1) {
-//             score++
+//             inARow++
 //             console.log('first')
 //             if ((game[rows][column] + 1) === 1) {
-//                 score++
+//                 inARow++
 //                 console.log('second')
 //                 if (cell + 2 === 1) {
-//                     score++
+//                     inARow++
 //                     console.log('third')
 //                     if (cell + 3 === 1) {
-//                         score++
+//                         inARow++
 //                         alert('player wins!!')
 //                         return
 //                     } else {
-//                         score = 0;
+//                         inARow = 0;
 //                     }
 //                 } else {
-//                     score = 0;
+//                     inARow = 0;
 //                 }
 //             } else {
-//                 score = 0;
+//                 inARow = 0;
 //             }
 //         } else {
-//             score = 0;
+//             inARow = 0;
 //         }
 //     }
 // }
@@ -196,7 +198,7 @@ var horizontalCheck = function (rowIndex, colIndex) {
 
 
 // var checkHorizontal = function (column) {
-//     var score = 0;
+//     var inARow = 0;
 //     for (j = 5; j >= 0; j--) {
 //         if (game[j][column] === 1)
 
