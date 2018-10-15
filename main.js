@@ -32,6 +32,7 @@ function create() {
             row.appendChild(cell);
         }
     }
+
 }
 create();
 
@@ -105,6 +106,17 @@ var checkWin = function () {
                 } else if (currentPlayer === player2) {
                     player2Score++;
                     alert('Player 2 Wins!!!');
+                    return;
+                }
+                if(game !== [
+                    [0, 0, 0, 0, 0, 0, 0, ],
+                    [0, 0, 0, 0, 0, 0, 0, ],
+                    [0, 0, 0, 0, 0, 0, 0, ],
+                    [0, 0, 0, 0, 0, 0, 0, ],
+                    [0, 0, 0, 0, 0, 0, 0, ],
+                    [0, 0, 0, 0, 0, 0, 0, ]
+                ]){
+                    alert('Nobody Wins. Try Again')
                     return;
                 }
             }
