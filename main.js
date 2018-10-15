@@ -174,7 +174,7 @@ var DiagonalLR = function (rowIndex, colIndex) {
     let currentRow = rowIndex - 1;
     for (currentRow, col; currentRow >= 0, col < row.length; currentRow--, col++) {
         var row1 = game[currentRow];
-        if (row1[col] === val) {
+        if (row1 && row1[col] === val) {
             inARow++;
         } else {
             break;
@@ -201,7 +201,7 @@ var DiagonalRL = function (rowIndex, colIndex) {
     // for(col; col>=0; col--)
     for (currentRow, col; currentRow >= 0, col >= 0; currentRow--, col--) {
         var row1 = game[currentRow];
-        if (row1[col] === val) {
+        if (row1 && row1[col] === val) {
             inARow++;
         } else {
             break;
