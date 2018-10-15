@@ -13,6 +13,11 @@ var game = [
 var player1 = 'Player 1';
 var player2 = 'Player 2';
 var currentPlayer = player1;
+var player1Score = 0;
+var player2Score = 0;
+$('.user1').html(`Player one score: ${player1Score}`)
+$('.user2').html(`Player two score: ${player2Score}`)
+
 
 function create() {
     for (j = 0; j < 6; j++) {
@@ -45,6 +50,8 @@ var clickHandler = function (event) {
     } else {
         currentPlayer = player1;
     }
+    $('.user1').html(`Player one score: ${player1Score}`)
+    $('.user2').html(`Player two score: ${player2Score}`)
 };
 
 
@@ -63,6 +70,17 @@ var addChits = function (column) {
         if (game[rows][column] === 0) {
             game[rows][column] = getPlayer();
             colorChange(rows, column);
+            return;
+        }
+    }
+}
+
+var reset = function (column) {
+    var rows = game.length - 1;
+    for (rows; rows >= 0; rows--) {
+        console.log(game[rows][column])
+        if (game[rows][column] !== 0) {
+            game[rows][column] = 0;
             return;
         }
     }
@@ -93,12 +111,10 @@ var checkWin = function () {
                 gameOn = 'off';
                 inARow = 1;
                 if (currentPlayer === player1) {
-                    console.log('me')
-                    player1Score++
+                    player1Score++;
                     return;
                 } else if (currentPlayer === player2) {
-                    console.log('you');
-                    player2Score++
+                    player2Score++;
                     return;
                 }
             }
@@ -221,10 +237,27 @@ $('#oneButtonToRuleThemAll').click(function () {
         gameOn = 'off';
         currentPlayer = player1;
         $('.diamond').removeClass('player1 player2');
+        reset();
 
     }
 })
 console.log(gameOn)
+
+// var horizontalReset = function (rowIndex, colIndex) {
+//     let row = game[rowIndex];
+//     let col = colIndex;
+//     if (row[col] === 0) {
+//         return false;
+//     }
+//     for (col; col < row.length; col++) {
+//         if (row[col] !== 0) {
+//            row[col] = 0;
+//         } else {
+//             break;
+//         }
+//     }
+//     return false;
+// }
 //     for (rows; rows >= 0; rows--) {
 //         var cell = game[rows][column];
 //         // console.log("rows: ", rows, game[rows]);
