@@ -114,10 +114,11 @@ var checkWin = function () {
                         setTimeout(function () {
                         swal('Player 1 Wins!!!', "Congratulations!");
                         }, 50)
+                        gameOn = 'off';
                         return;
                     } else if (currentPlayer === player2) {
                         player2Score++;
-                        // alert('Player 2 Wins!!!');
+                        gameOn = 'off';
                         setTimeout(function() {
                             swal("Player 2 Wins!!!", "Congratulations!", "success")
                         }, 50)
