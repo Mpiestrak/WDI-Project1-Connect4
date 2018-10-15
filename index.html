@@ -7,15 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script defer src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" defer></script>
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+    <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
     <title>Connect Four</title>
 </head>
 
 <body>
-    <div class="title">Connect 4!</div>
+    <div class="title animated bounce infinite">Connect 4!</div>
     <div class="nameBoxes">
         <h2 class="user1 scoreBox"></h2>
         <h2 class="user2 scoreBox"></h2>
@@ -27,7 +30,7 @@
 
     </div>
     <div class="buttons">
-        <button type="reset" id="theButton" class=" begin grow ">Begin Game</button>
+        <button type="reset" id="theButton" class=" begin grow">Begin Game</button>
     </div>
 </body>
 

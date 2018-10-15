@@ -15,7 +15,7 @@
     background-color: rgb(80, 80, 80);
     border: solid 10px rgb(80, 80, 80);
     margin-top: 5px;
-    border-radius: 25px;
+    border-radius: 10px;
     flex-direction: column;
 
 }
@@ -29,9 +29,9 @@
     text-align: center;
     text-justify: center;
     border: 5px solid rgb(95, 0, 0);
-    width: 6vw;
+    width: 8vw;
     height: 6vw;
-    border-radius: 45%;
+    border-radius: 25px;
     background-color: white;
 }
 

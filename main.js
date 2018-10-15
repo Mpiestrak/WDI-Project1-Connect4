@@ -18,7 +18,7 @@ var player2Score = 0;
 $('.user1').html(`Player one score: ${player1Score}`);
 $('.user2').html(`Player two score: ${player2Score}`);
 
-
+// Creates the gameboard on page load
 function create() {
     for (j = 0; j < 6; j++) {
         var row = document.createElement('div');
@@ -29,6 +29,7 @@ function create() {
             var cell = document.createElement('div');
             cell.setAttribute('class', `diamond col-${i}`);
             cell.setAttribute('data-col', i);
+            cell.setAttribute('alt', `row-${j}, col-${i}`)
             row.appendChild(cell);
         }
     }
@@ -36,13 +37,19 @@ function create() {
 }
 create();
 
+$().ready(function() {
+    var nameOne = window.prompt()
+})
+// Controls whether game board is responsive or not
 gameOn = 'off';
+
+// Handles clicks, calls most other functions
 var clicks = 0;
 var clickHandler = function (event) {
     if (gameOn === 'off') {
         return;
     }
-    var column = parseInt(event.target.dataset.col, 10);
+    var column = parseInt(event.target.dataset.col, 10); // Pulls value of dataset.col and changes it to an integer
     (clicks++);
     addChits(column);
     checkWin();
@@ -55,7 +62,7 @@ var clickHandler = function (event) {
     $('.user2').html(`Player two score: ${player2Score}`);
 };
 
-
+// Controls which player is dropping discs
 function getPlayer() {
     if (currentPlayer === player1) {
         return 1;
@@ -63,6 +70,7 @@ function getPlayer() {
     return 2;
 }
 
+// Calls the clickHandler function on each mouseclick on a cell within the board.
 $('.diamond').click(clickHandler);
 
 var addChits = function (column) {
@@ -76,6 +84,7 @@ var addChits = function (column) {
     }
 }
 
+// Changes color of currently selected element
 function colorChange(row, column) {
     var cell = $(`.row-${row} .col-${column}`);
     if (currentPlayer === player1) {
@@ -85,6 +94,7 @@ function colorChange(row, column) {
     }
 }
 
+// Runs through each win function checking if any of the win conditions have been met
 var checkWin = function () {
     var maxRows = game.length;
     var row = 0;
@@ -99,26 +109,20 @@ var checkWin = function () {
             if (winHorizontal === true || winVertical === true || winDiagonalLR === true || winDiagonalRL === true) {
                 gameOn = 'off';
                 inARow = 1;
-                if (currentPlayer === player1) {
-                    player1Score++;
-                    alert('Player 1 Wins!!!');
-                    return;
-                } else if (currentPlayer === player2) {
-                    player2Score++;
-                    alert('Player 2 Wins!!!');
-                    return;
-                }
-                if(game !== [
-                    [0, 0, 0, 0, 0, 0, 0, ],
-                    [0, 0, 0, 0, 0, 0, 0, ],
-                    [0, 0, 0, 0, 0, 0, 0, ],
-                    [0, 0, 0, 0, 0, 0, 0, ],
-                    [0, 0, 0, 0, 0, 0, 0, ],
-                    [0, 0, 0, 0, 0, 0, 0, ]
-                ]){
-                    alert('Nobody Wins. Try Again')
-                    return;
-                }
+                    if (currentPlayer === player1) {
+                        player1Score++;
+                        setTimeout(function () {
+                        swal('Player 1 Wins!!!', "Congratulations!");
+                        }, 50)
+                        return;
+                    } else if (currentPlayer === player2) {
+                        player2Score++;
+                        // alert('Player 2 Wins!!!');
+                        setTimeout(function() {
+                            swal("Player 2 Wins!!!", "Congratulations!", "success")
+                        }, 50)
+                    }
+                return;
             }
         }
     }
@@ -126,11 +130,11 @@ var checkWin = function () {
 }
 
 
-
+// Checks for a horizontal win
 var horizontalCheck = function (rowIndex, colIndex) {
-    var inARow = 1; 
+    var inARow = 1;
     let row = game[rowIndex];
-    let val = row[colIndex]; 
+    let val = row[colIndex];
     if (val === 0) {
         return false;
     }
@@ -149,8 +153,9 @@ var horizontalCheck = function (rowIndex, colIndex) {
     return false;
 }
 
+// Checks for a vertical win
 var checkVertical = function (rowIndex, colIndex) {
-    var inARow = 1; 
+    var inARow = 1;
     let row = game[rowIndex];
     let val = row[colIndex];
     if (val === 0) {
@@ -172,6 +177,7 @@ var checkVertical = function (rowIndex, colIndex) {
     return false;
 }
 
+// Checks for a left to right Diagonal win
 var DiagonalLR = function (rowIndex, colIndex) {
     var inARow = 1;
     let row = game[rowIndex];
@@ -197,7 +203,8 @@ var DiagonalLR = function (rowIndex, colIndex) {
     }
     return false;
 }
-console.log(game[0])
+
+// Checks for a right to left win
 var DiagonalRL = function (rowIndex, colIndex) {
     var inARow = 1;
     let row = game[rowIndex];
@@ -225,6 +232,7 @@ var DiagonalRL = function (rowIndex, colIndex) {
     return false;
 }
 
+// Controls the begin/reset button and the code that resets the board on click.
 $('#theButton').click(function () {
     if ($(this).text() == "Begin Game") {
         $(this).text("Reset Game");
